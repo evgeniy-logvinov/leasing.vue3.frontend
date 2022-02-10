@@ -39,4 +39,7 @@ export default defineConfig({
       useSource: true,
     }),
   ],
+  define: {
+    'process.env': process.env
+  }
 })

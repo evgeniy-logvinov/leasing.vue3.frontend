@@ -1,16 +1,28 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed, toRefs } from 'vue'
 import {ElButton} from 'element-plus'
+import { useStore } from 'vuex'
 
-defineProps<{ msg: string }>()
+const props = defineProps<{ msg: string }>()
+const store = useStore()
+const count2 = ref(0)
 
-const count = ref(0)
+console.log(store.state);
+
+const count = computed(() => store.state.count)
+
+const { msg } = toRefs(props);
+
+function log() {
+  console.log('msg', msg.value)
+  store.commit('increment');
+}
 </script>
 
 <template>
-  <el-button type="primary">Primary</el-button>
   <h1>{{ msg }}</h1>
-
+  <el-button type="primary" @click="log">Primary</el-button>
+  {{ count }}
   <p>
     Recommended IDE setup:
     <a href="https://code.visualstudio.com/" target="_blank">VSCode</a>

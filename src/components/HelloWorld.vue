@@ -1,27 +1,27 @@
 <script setup lang="ts">
-import { ref, computed, toRefs } from 'vue'
-import {ElButton} from 'element-plus'
-import { useStore } from 'vuex'
+  import { ref, computed, toRefs } from 'vue'
+  import { ElButton } from 'element-plus'
+  import { useStore } from 'vuex'
 
-const props = defineProps<{ msg: string }>()
-const store = useStore()
-const count2 = ref(0)
+  const props = defineProps<{ msg: string }>()
+  const store = useStore()
+  const count2 = ref(0)
 
-console.log(store.state);
+  console.log(store.state)
 
-const count = computed(() => store.state.count)
+  const count = computed(() => store.state.count)
 
-const { msg } = toRefs(props);
+  const { msg } = toRefs(props)
 
-function log() {
-  console.log('msg', msg.value)
-  store.commit('increment');
-}
+  function log() {
+    console.log('msg', msg.value)
+    store.commit('increment')
+  }
 </script>
 
 <template>
   <h1>{{ msg }}</h1>
-  <el-button type="primary" @click="log">Primary</el-button>
+  <el-button type="primary" @click="log"> Primary </el-button>
   {{ count }}
   <p>
     Recommended IDE setup:
@@ -48,19 +48,19 @@ function log() {
 </template>
 
 <style scoped>
-a {
-  color: #42b983;
-}
+  a {
+    color: #42b983;
+  }
 
-label {
-  margin: 0 0.5em;
-  font-weight: bold;
-}
+  label {
+    margin: 0 0.5em;
+    font-weight: bold;
+  }
 
-code {
-  background-color: #eee;
-  padding: 2px 4px;
-  border-radius: 4px;
-  color: #304455;
-}
+  code {
+    background-color: #eee;
+    padding: 2px 4px;
+    border-radius: 4px;
+    color: #304455;
+  }
 </style>

@@ -1,17 +1,17 @@
-import { State } from "vue";
-import { createStore } from "vuex";
+import { State } from 'vue'
+import { createStore } from 'vuex'
 
 export default createStore({
-  state () {
+  state() {
     return {
-      count: 0
+      count: 0,
     }
   },
   mutations: {
-    increment (state: State) {
+    increment(state: State) {
       state.count++
-    }
+    },
   },
   actions: {},
   modules: {},
-});
+})

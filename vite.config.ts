@@ -7,6 +7,7 @@ import vue from '@vitejs/plugin-vue'
 
 // or use unplugin-element-plus
 import ElementPlus from 'unplugin-element-plus/vite'
+import eslintPlugin from 'vite-plugin-eslint'
 
 // vite.config.ts
 export default defineConfig({
@@ -24,6 +25,7 @@ export default defineConfig({
   },
   plugins: [
     vue(),
+    eslintPlugin(),
     // use unplugin-vue-components
     // Components({
     //   resolvers: [
@@ -40,6 +42,6 @@ export default defineConfig({
     }),
   ],
   define: {
-    'process.env': process.env
-  }
+    'process.env': process.env,
+  },
 })

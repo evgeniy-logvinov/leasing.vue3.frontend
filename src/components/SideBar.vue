@@ -5,15 +5,15 @@
     :collapse="isCollapse"
     router
   >
-    <el-menu-item index="1" route="/users">
+    <el-menu-item index="1" route="users">
       <el-icon><avatar /></el-icon>
       <template #title> Пользователи </template>
     </el-menu-item>
-    <el-menu-item index="2" route="/orders">
+    <el-menu-item index="2" route="orders">
       <el-icon><grid /></el-icon>
       <template #title> Заявки </template>
     </el-menu-item>
-    <el-menu-item index="3" route="/statistic">
+    <el-menu-item index="3" route="statistic">
       <el-icon><pie-chart /></el-icon>
       <template #title> Статистика </template>
     </el-menu-item>

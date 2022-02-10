@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 
 const routes: Array<RouteRecordRaw> = [
-  { path: '/', redirect: 'private' },
+  { path: '/', redirect: '/private' },
   {
     path: '/about',
     component: () =>
@@ -9,9 +9,18 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/private',
-    name: 'Private',
+    name: 'private',
+    redirect: { name: 'users' },
     component: () =>
       import(/* webpackChunkName: "private" */ '../views/Private.vue'),
+    children: [
+      {
+        path: 'users',
+        name: 'users',
+        component: () =>
+          import(/* webpackChunkName: "private" */ '../views/Users.vue'),
+      },
+    ],
   },
   {
     path: '/:pathMatch(.*)*',
@@ -24,6 +33,13 @@ const routes: Array<RouteRecordRaw> = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+})
+
+router.beforeEach((to, from) => {
+  console.log(to, from)
+  // ...
+  // explicitly return false to cancel the navigation
+  return true
 })
 
 export default router

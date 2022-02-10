@@ -15,11 +15,7 @@ const size: "default" | "small" | "large" = "small";
   <el-config-provider :zIndex="zIndex" :locale="locale">
     <!-- <img alt="Vue logo" src="./assets/logo.png" /> -->
     <!-- <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" /> -->
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-  <router-view />
+    <router-view />
   </el-config-provider>
 </template>
 

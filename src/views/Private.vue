@@ -14,18 +14,15 @@
 </script>
 
 <template>
-  <el-container
-    class="layout-container-demo"
-    style="height: 500px; border: 1px solid #eee"
-  >
-    <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
-      <el-scrollbar>
+  <el-container>
+    <el-aside>
+      <el-scrollbar class="h-full">
         <SideBar />
       </el-scrollbar>
     </el-aside>
 
     <el-container>
-      <el-header style="text-align: right; font-size: 12px">
+      <el-header style="text-align: right; font-size: 12px; width: 100%">
         <div class="toolbar">
           <el-dropdown>
             <el-icon style="margin-right: 8px; margin-top: 1px"
@@ -42,8 +39,7 @@
           <span>Tom</span>
         </div>
       </el-header>
-
-      <el-main>
+      <el-main class="w-full">
         <el-scrollbar>
           <router-view></router-view>
         </el-scrollbar>

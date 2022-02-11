@@ -18,7 +18,21 @@ const routes: Array<RouteRecordRaw> = [
         path: 'users',
         name: 'users',
         component: () =>
-          import(/* webpackChunkName: "private" */ '../views/Users.vue'),
+          import(/* webpackChunkName: "users" */ '../views/Users.vue'),
+      },
+      {
+        path: 'orders',
+        name: 'orders',
+        component: () =>
+          import(/* webpackChunkName: "orders" */ '../views/Orders.vue'),
+      },
+      {
+        path: 'statistics',
+        name: 'statistics',
+        component: () =>
+          import(
+            /* webpackChunkName: "statistics" */ '../views/Statistics.vue'
+          ),
       },
     ],
   },

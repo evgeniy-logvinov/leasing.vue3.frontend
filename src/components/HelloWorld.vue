@@ -1,14 +1,14 @@
 <script setup lang="ts">
   import { computed, toRefs, defineProps } from 'vue'
   import { ElButton } from 'element-plus'
-  import { useStore } from 'vuex'
+  import { useStore } from '~/store'
 
   const props = defineProps<{ msg: string }>()
   const store = useStore()
 
   console.log(store.state)
 
-  const count = computed(() => store.state.count)
+  const count = computed(() => store.state)
 
   const { msg } = toRefs(props)
 

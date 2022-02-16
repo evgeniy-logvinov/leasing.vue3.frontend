@@ -1,0 +1,14 @@
+{
+  "clients": "Клиенты",
+  "name": "Имя",
+  "inn": "Инн",
+  "address": "Адрес",
+  "agreement": "Договор",
+  "invite": "Пригласить",
+  "state": "Статус",
+  "accreditation": "",
+  "blocked": "Ограничить доступ",
+  "description": "Примечание",
+  "lizingCompanies": "Лизинговые компании",
+  "monday": "Понедельник"
+}

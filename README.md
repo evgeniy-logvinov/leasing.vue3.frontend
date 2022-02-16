@@ -15,3 +15,4 @@ Since TypeScript cannot handle type information for `.vue` imports, they are shi
 https://dev.to/shubhadip/vue-3-vuex-4-modules-typescript-2i2o
 https://vuex.vuejs.org/guide/typescript-support.html#typing-usestore-composition-function
 https://programmersought.com/article/28859424823/
+https://miyauchi.dev/posts/vite-vue3-typescript/

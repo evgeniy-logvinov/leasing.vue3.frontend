@@ -7,18 +7,30 @@
     ></el-col>
   </el-row>
   <el-row>
-    <el-col>{{ date }} {{ time }}</el-col>
+    <el-col
+      >{{ date }} ({{ t('monday') }}) {{ time }}
+      <el-button type="primary" @click="switchLanguage">
+        EN / RU
+      </el-button></el-col
+    >
   </el-row>
+  <el-row> </el-row>
 </template>
 
 <script lang="ts" setup>
   import { CloseBold } from '@element-plus/icons-vue'
   import { ElIcon, ElRow, ElCol } from 'element-plus'
   import { ref, computed } from 'vue'
+  import { useI18n } from 'vue-i18n'
   import { useStore } from '~/store'
 
   const store = useStore()
+  const { locale, t } = useI18n()
   const userName = computed(() => store.state.userName)
-  const date = ref('15.04.2019(понедельник)')
+
+  const date = ref(`15.04.2019`)
   const time = ref('12:34:14')
+  const switchLanguage = () => {
+    locale.value = locale.value === 'ru-RU' ? 'en-US' : 'ru-RU'
+  }
 </script>

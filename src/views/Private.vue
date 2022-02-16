@@ -1,6 +1,13 @@
 <script setup lang="ts">
   import SideBar from '~/components/SideBar.vue'
-  import { ElContainer, ElAside, ElScrollbar, ElHeader } from 'element-plus'
+  import {
+    ElContainer,
+    ElAside,
+    ElScrollbar,
+    ElHeader,
+    ElFooter,
+    ElMain,
+  } from 'element-plus'
   import NavBar from '~/components/NavBar.vue'
 </script>
 

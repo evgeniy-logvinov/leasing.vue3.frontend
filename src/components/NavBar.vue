@@ -19,7 +19,7 @@
 
 <script lang="ts" setup>
   import { CloseBold } from '@element-plus/icons-vue'
-  import { ElIcon, ElRow, ElCol } from 'element-plus'
+  import { ElIcon, ElRow, ElCol, ElButton } from 'element-plus'
   import { ref, computed } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { useStore } from '~/store'

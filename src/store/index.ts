@@ -1,5 +1,10 @@
 import { InjectionKey } from 'vue'
-import { createStore, useStore as baseUseStore, Store } from 'vuex'
+import {
+  createStore,
+  useStore as baseUseStore,
+  Store,
+  createLogger,
+} from 'vuex'
 import { RootState } from './types'
 import { state } from './state'
 import { mutations } from './mutations'
@@ -14,6 +19,7 @@ export const store = createStore<RootState>({
   mutations,
   actions,
   getters,
+  plugins: [createLogger()],
 })
 
 // define your own `useStore` composition function

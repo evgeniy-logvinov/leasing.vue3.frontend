@@ -6,7 +6,6 @@ export interface User {
   inn: number
   email: string
   state: UserState
-  accreditation?: boolean
   blocked?: boolean
   description?: string
 }

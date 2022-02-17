@@ -1,0 +1,27 @@
+{
+  "clients": "Клиенты",
+  "name": "Имя",
+  "inn": "Инн",
+  "address": "Адрес",
+  "agreement": "Договор",
+  "invite": "Пригласить",
+  "state": "Статус",
+  "accreditation": "Аккредитация",
+  "blocked": "Блокирован",
+  "description": "Примечание",
+  "lizingCompanies": "Лизинговые компании",
+  "monday": "Понедельник",
+  "addClient": "Добавить клиента",
+  "to": {
+    "invite": "Пригласить",
+    "delete": "Удалить",
+    "blocked": "Блокировать"
+  },
+  "registred": "Зарегистрирован",
+  "unregistred": "Незарегистрирован",
+  "input": {
+    "placeholder": "Введите текст"
+  },
+  "access": "Доступ",
+  "active": "Активен"
+}

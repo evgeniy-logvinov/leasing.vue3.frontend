@@ -11,10 +11,20 @@ export class LizingCompanyEntity extends UserEntity {
     _email: string,
     _state: UserState,
     private readonly _accreditation?: boolean,
-    _blocked?: boolean,
+    _blocked = false,
+    _invited = false,
     _description?: string
   ) {
-    super(_id, _userName, _inn, _email, _state, _blocked, _description)
+    super(
+      _id,
+      _userName,
+      _inn,
+      _email,
+      _state,
+      _blocked,
+      _invited,
+      _description
+    )
     this._displayAccreditation = !!this._accreditation
   }
 
@@ -31,6 +41,7 @@ export class LizingCompanyEntity extends UserEntity {
       proto.state,
       proto.accreditation,
       proto.blocked,
+      proto.invited,
       proto.description
     )
   }

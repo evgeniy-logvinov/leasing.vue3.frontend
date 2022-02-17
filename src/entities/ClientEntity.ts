@@ -8,10 +8,20 @@ export class ClientEntity extends UserEntity {
     _inn: number,
     _email: string,
     _state: UserState,
-    _blocked?: boolean,
+    _blocked = false,
+    _invited = false,
     _description?: string
   ) {
-    super(_id, _userName, _inn, _email, _state, _blocked, _description)
+    super(
+      _id,
+      _userName,
+      _inn,
+      _email,
+      _state,
+      _blocked,
+      _invited,
+      _description
+    )
   }
 
   public static parse(proto: Client) {
@@ -22,6 +32,7 @@ export class ClientEntity extends UserEntity {
       proto.email,
       proto.state,
       proto.blocked,
+      proto.invited,
       proto.description
     )
   }

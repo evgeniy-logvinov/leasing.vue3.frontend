@@ -10,7 +10,7 @@
     "lint:script": "eslint --ext .ts,vue --ignore-path .gitignore .",
     "lint:style": "stylelint src/**/*.{css,scss,vue}",
     "lint:markup": "vue-tsc --noEmit",
-    "vue-i18n-extract": "vue-i18n-extract report --vueFiles \"./src/**/*.?(ts|vue)\" --languageFiles \"./src/i18n/*.json\""
+    "vue-i18n-extract": "vue-i18n-extract report --vueFiles \"./src/**/*.?(ts|vue)\" --languageFiles \"./src/i18n/locales/*.json\""
   },
   "lint-staged": {
     "*.{ts,tsx}": "eslint --fix",

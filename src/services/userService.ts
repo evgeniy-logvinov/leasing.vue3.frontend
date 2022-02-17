@@ -15,14 +15,19 @@ const clients: Client[] = [
     userName: 'Клиент 2',
     inn: 12345677,
     email: 'info2@example.ru',
-    state: 'REG',
+    state: 'UNREG',
+    invited: true,
+    blocked: true,
+    description: 'Test description',
   },
   {
     id: '3',
     userName: 'Клиент 3',
     inn: 12345676,
     email: 'info3@example.ru',
-    state: 'UNREG',
+    state: 'REG',
+    invited: true,
+    blocked: true,
   },
 ]
 

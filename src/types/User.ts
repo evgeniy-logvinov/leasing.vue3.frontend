@@ -7,5 +7,6 @@ export interface User {
   email: string
   state: UserState
   blocked?: boolean
+  invited?: boolean
   description?: string
 }

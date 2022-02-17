@@ -1,9 +1,8 @@
+import { i18n } from '~/i18n'
 import { UserState } from '~/types'
-
 export abstract class UserEntity {
   private readonly _displayState: string
   private readonly _displayDescription: string
-  private readonly _displayBlocked: boolean
 
   constructor(
     private readonly _id: string,
@@ -11,12 +10,12 @@ export abstract class UserEntity {
     private readonly _inn: number,
     private readonly _email: string,
     private readonly _state: UserState,
-    private readonly _blocked?: boolean,
+    private readonly _blocked: boolean,
+    private readonly _invited: boolean,
     private readonly _description?: string
   ) {
-    this._displayState = this._state
+    this._displayState = this.getState(this._state)
     this._displayDescription = this._description || ''
-    this._displayBlocked = !!this._blocked
   }
 
   public get id(): string {
@@ -43,11 +42,24 @@ export abstract class UserEntity {
     return this._displayDescription
   }
 
-  public get displayBlocked(): boolean {
-    return this._displayBlocked
+  public get blocked(): boolean {
+    return this._blocked
+  }
+
+  public get invited(): boolean {
+    return this._invited
   }
 
   public get displayState(): string {
     return this._displayState
+  }
+
+  private getState(state: UserState) {
+    if (state === 'REG') {
+      return i18n.global.t('registred')
+    } else if (state === 'UNREG') {
+      return i18n.global.t('unregistred')
+    }
+    return ''
   }
 }

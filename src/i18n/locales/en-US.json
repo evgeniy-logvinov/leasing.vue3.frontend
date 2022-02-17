@@ -1,0 +1,27 @@
+{
+  "clients": "",
+  "name": "",
+  "inn": "",
+  "address": "",
+  "agreement": "",
+  "invite": "",
+  "state": "",
+  "accreditation": "",
+  "blocked": "",
+  "description": "",
+  "lizingCompanies": "",
+  "monday": "Monday",
+  "addClient": "Add client",
+  "to": {
+    "invite": "Invite",
+    "delete": "Delete",
+    "blocked": ""
+  },
+  "registred": "",
+  "unregistred": "",
+  "input": {
+    "placeholder": ""
+  },
+  "access": "",
+  "active": ""
+}

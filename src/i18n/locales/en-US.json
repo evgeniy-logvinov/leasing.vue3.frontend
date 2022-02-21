@@ -23,5 +23,20 @@
     "placeholder": ""
   },
   "access": "",
-  "active": ""
+  "active": "",
+  "client": {
+    "not": {
+      "exists": "Client not found"
+    },
+    "question": {
+      "invite": "",
+      "delete": ""
+    },
+    "addNew": {
+      "title": ""
+    }
+  },
+  "yes": "",
+  "no": "",
+  "email": ""
 }

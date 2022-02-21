@@ -10,7 +10,7 @@ export class ClientEntity extends UserEntity {
     _state: UserState,
     _blocked = false,
     _invited = false,
-    _description?: string
+    _description = ''
   ) {
     super(
       _id,

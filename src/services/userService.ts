@@ -1,6 +1,6 @@
 import { ClientEntity } from '~/entities/ClientEntity'
 import { LizingCompanyEntity } from '~/entities/LizingCompanyEntity'
-import { Client, LizingCompany } from '~/types'
+import { Client, IUser, LizingCompany, User } from '~/types'
 
 const clients: Client[] = [
   {
@@ -71,14 +71,48 @@ const newLizingCompany: LizingCompany = {
   state: 'UNREG',
 }
 
+let parsedClients: ClientEntity[] = []
+const refreshClients = () => {
+  parsedClients = clients.map((client) => ClientEntity.parse(client))
+}
+
 class UserService {
   async getClients(): Promise<ClientEntity[]> {
-    return Promise.resolve(clients.map((client) => ClientEntity.parse(client)))
+    console.log('getClients')
+    refreshClients()
+    return Promise.resolve(parsedClients)
   }
 
-  async addClient(): Promise<string> {
-    clients.push(newClient)
-    return Promise.resolve(newClient.id)
+  async addClient(
+    userName: string,
+    inn: number,
+    email: string
+  ): Promise<string> {
+    const newUser = ClientEntity.parse({
+      ...newClient,
+      userName,
+      inn,
+      email,
+      id: '10',
+    })
+    console.log('add', newUser)
+    clients.push(newUser)
+    return Promise.resolve(newUser.id)
+  }
+
+  async updateClient(client: User): Promise<string> {
+    console.log('update', client)
+    return Promise.resolve(client.id)
+  }
+
+  async inviteClient(id: string): Promise<string> {
+    console.log('invite', id)
+    return Promise.resolve(id)
+  }
+
+  async deleteClient(id: string): Promise<string> {
+    console.log('delete', id)
+    return Promise.resolve(id)
   }
 
   async getLizingCompanies(): Promise<LizingCompanyEntity[]> {

@@ -69,7 +69,7 @@
           :key="'toInvite' + row.id"
           :confirm-button-text="t('yes')"
           :cancel-button-text="t('no')"
-          :title="t('client.question.invite')"
+          :title="t('lizingCompany.question.invite')"
           @confirm="confirmInviteEvent(row.id)"
         >
           <template #reference>
@@ -83,7 +83,7 @@
           key="delete"
           :confirm-button-text="t('yes')"
           :cancel-button-text="t('no')"
-          :title="t('client.question.delete')"
+          :title="t('lizingCompany.question.delete')"
           @confirm="confirmDeleteEvent(row.id)"
         >
           <template #reference>

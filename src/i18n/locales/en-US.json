@@ -49,6 +49,10 @@
     "not": {
       "exists": ""
     },
-    "add": ""
+    "add": "",
+    "question": {
+      "invite": "",
+      "delete": ""
+    }
   }
 }

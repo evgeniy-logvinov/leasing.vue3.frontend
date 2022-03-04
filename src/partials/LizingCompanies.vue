@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import { onMounted, ref } from 'vue'
   import { ElRow, ElCol, ElButton } from 'element-plus'
-  import { userService } from '~/services/userService'
+  import { userService } from '~/services'
   import { useI18n } from 'vue-i18n'
   import { ILizingCompany, NewUser } from '~/types'
   import { i18n } from '~/i18n'

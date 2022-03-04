@@ -9,20 +9,22 @@
     ElPopconfirm,
   } from 'element-plus'
   import { useI18n } from 'vue-i18n'
-  import { IUser } from '~/types'
+  import { ILizingCompany } from '~/types'
   // TODO: handle on change to prevent a lot of requests
 
   const emit = defineEmits<{
     (e: 'invite', id: string): void
     (e: 'delete', id: string): void
+    (e: 'accreditation', id: string, event: boolean): void
     (e: 'blocked', id: string, event: boolean): void
     (e: 'description', id: string, event: string): void
+    (e: 'download', id: string): void
   }>()
   const { t } = useI18n()
   const props = defineProps<{
-    clients?: IUser[]
+    lizingCompanies?: ILizingCompany[]
   }>()
-  const { clients } = toRefs(props)
+  const { lizingCompanies } = toRefs(props)
 
   const confirmInviteEvent = (id: string): boolean | Promise<boolean> => {
     emit('invite', id)
@@ -37,7 +39,7 @@
 
 <template>
   <el-table
-    :data="clients"
+    :data="lizingCompanies"
     current-row-key="id"
     highlight-current-row
     :default-sort="{ prop: 'userName', order: 'ascending' }"
@@ -48,18 +50,30 @@
     <el-table-column prop="inn" :label="t('inn')" width="90"> </el-table-column>
     <el-table-column prop="email" sortable :label="t('address')">
     </el-table-column>
+    <el-table-column prop="agreement" sortable :label="t('agreement')">
+      <template #default="{ row }">
+        <!-- TODO: different colors for different statuses -->
+        <el-button
+          v-if="row.state === 'UNREG' && row.invited"
+          key="downloadAgreement"
+          size="small"
+          @click="emit('download', row.id)"
+          >{{ t('agreement') }}</el-button
+        >
+      </template>
+    </el-table-column>
     <el-table-column :label="t('invite')" width="120">
       <template #default="{ row }">
         <el-popconfirm
-          v-if="row.state === 'UNREG'"
-          key="toInvite"
+          v-if="row.state === 'UNREG' && !row.invited"
+          :key="'toInvite' + row.id"
           :confirm-button-text="t('yes')"
           :cancel-button-text="t('no')"
           :title="t('client.question.invite')"
           @confirm="confirmInviteEvent(row.id)"
         >
           <template #reference>
-            <el-button size="small" :disabled="!row.invited">{{
+            <el-button size="small" :disabled="row.invited">{{
               t('to.invite')
             }}</el-button>
           </template>
@@ -79,6 +93,16 @@
       </template>
     </el-table-column>
     <el-table-column prop="displayState" :label="t('state')"> </el-table-column>
+    <el-table-column prop="accreditation" :label="t('accreditation')">
+      <template #default="{ row }">
+        <el-checkbox
+          :label="t('accredetation')"
+          :model-value="row.accreditation"
+          size="small"
+          @change="emit('accreditation', row.id, $event)"
+        ></el-checkbox>
+      </template>
+    </el-table-column>
     <el-table-column prop="blocked" :label="t('access')">
       <template #default="{ row }">
         <el-checkbox

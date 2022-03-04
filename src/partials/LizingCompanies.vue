@@ -1,55 +1,110 @@
 <script setup lang="ts">
   import { onMounted, ref } from 'vue'
-  import { ElTable, ElTableColumn, ElButton, ElRow, ElCol } from 'element-plus'
+  import { ElRow, ElCol, ElButton } from 'element-plus'
   import { userService } from '~/services/userService'
   import { useI18n } from 'vue-i18n'
-  import { LizingCompanyEntity } from '~/entities/LizingCompanyEntity'
+  import { ILizingCompany, NewUser } from '~/types'
+  import { i18n } from '~/i18n'
+  import AddUser from '~/forms/AddUser.vue'
+  import LizingCompaniesTable from '~/forms/LizingCompaniesTable.vue'
+  // TODO: debounce for description
 
-  const lizingCompanies = ref<LizingCompanyEntity[]>([])
+  const lizingCompanies = ref<ILizingCompany[]>([])
+  const dialogAddVisible = ref<boolean>(false)
   const { t } = useI18n()
 
-  const addLizingCompany = async () => {
-    await userService.addLizingCompany()
-    await getLizingCompanies()
+  const handleInvite = async (id: string) => {
+    const lizingCompany = lizingCompanies.value.find((lk) => lk.id === id)
+
+    if (lizingCompany) {
+      lizingCompany.invited = !lizingCompany.invited
+    } else {
+      throw Error(i18n.global.t('lizingCompany.not.exists'))
+    }
+    await userService.inviteLizingCompany(id)
+  }
+
+  const handleDelete = async (id: string) => {
+    const index = lizingCompanies.value.findIndex((lk) => lk.id === id)
+    if (index) {
+      lizingCompanies.value.splice(index, 1)
+    }
+    await userService.deleteLizingCompany(id)
+  }
+
+  const handleBlocked = async (id: string, blocked: boolean) => {
+    const lizingCompany = lizingCompanies.value.find((lk) => lk.id === id)
+
+    if (lizingCompany) {
+      lizingCompany.blocked = blocked
+      await userService.updateLizingCompany(lizingCompany)
+    } else {
+      throw Error(i18n.global.t('lizingCompany.not.exists'))
+    }
+  }
+
+  const handleAccreditation = async (id: string, accreditation: boolean) => {
+    const lizingCompany = lizingCompanies.value.find((lk) => lk.id === id)
+
+    if (lizingCompany) {
+      lizingCompany.accreditation = accreditation
+      await userService.updateLizingCompany(lizingCompany)
+    } else {
+      throw Error(i18n.global.t('lizingCompany.not.exists'))
+    }
+  }
+
+  const handleDescription = async (id: string, description: string) => {
+    const lizingCompany = lizingCompanies.value.find((lk) => lk.id === id)
+
+    if (lizingCompany) {
+      lizingCompany.description = description
+      await userService.updateClient(lizingCompany)
+    } else {
+      throw Error(t('lizingCompany.exists'))
+    }
+  }
+
+  const handleDownloadAgreement = async (id: string) => {
+    await userService.downloadAgreement(id)
+  }
+
+  const addLizingCompany = async ({ email, inn, userName }: NewUser) => {
+    if (email && inn && userName) {
+      await userService.addLizingCompany(userName, inn, email)
+      dialogAddVisible.value = false
+      getLizingCompanies()
+    }
   }
 
   const getLizingCompanies = async () => {
-    const res = await userService.getLizingCompanies()
-    lizingCompanies.value = res
+    lizingCompanies.value = []
+    lizingCompanies.value = await userService.getLizingCompanies()
   }
 
   onMounted(async () => getLizingCompanies())
 </script>
 
 <template>
+  <add-user v-model="dialogAddVisible" @add="addLizingCompany"></add-user>
   <el-row>
     <el-col>
-      <el-button type="primary" @click="addLizingCompany">{{
-        t('addClient')
+      <el-button type="primary" @click="dialogAddVisible = true">{{
+        t('lizingCompany.add')
       }}</el-button>
     </el-col>
   </el-row>
   <el-row>
     <el-col>
-      <el-table :data="lizingCompanies" highlight-current-row>
-        <el-table-column type="index" width="50" />
-        <el-table-column prop="userName" :label="t('name')" width="140">
-        </el-table-column>
-        <el-table-column prop="inn" :label="t('inn')" width="120">
-        </el-table-column>
-        <el-table-column prop="email" :label="t('address')"> </el-table-column>
-        <el-table-column prop="agreement" :label="t('agreement')">
-        </el-table-column>
-        <el-table-column prop="invite" :label="t('invite')"> </el-table-column>
-        <el-table-column prop="displayState" :label="t('state')">
-        </el-table-column>
-        <el-table-column prop="accrediation" :label="t('accreditation')">
-        </el-table-column>
-        <el-table-column prop="blocked" :label="t('blocked')">
-        </el-table-column>
-        <el-table-column prop="description" :label="t('description')">
-        </el-table-column>
-      </el-table>
+      <lizing-companies-table
+        :lizing-companies="lizingCompanies"
+        @invite="handleInvite"
+        @delete="handleDelete"
+        @blocked="handleBlocked"
+        @accreditation="handleAccreditation"
+        @description="handleDescription"
+        @download="handleDownloadAgreement"
+      ></lizing-companies-table>
     </el-col>
   </el-row>
 </template>

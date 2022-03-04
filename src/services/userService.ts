@@ -1,6 +1,6 @@
 import { ClientEntity } from '~/entities/ClientEntity'
 import { LizingCompanyEntity } from '~/entities/LizingCompanyEntity'
-import { Client, IUser, LizingCompany, User } from '~/types'
+import { Client, LizingCompany, User } from '~/types'
 
 const clients: Client[] = [
   {
@@ -52,14 +52,29 @@ const lizingCompanies: LizingCompany[] = [
     userName: 'Компания 2',
     inn: 12345677,
     email: 'info2@example.ru',
-    state: 'REG',
+    state: 'UNREG',
+    invited: true,
+    blocked: true,
+    description: 'Test description',
   },
   {
     id: '3',
     userName: 'Компания 3',
     inn: 12345676,
     email: 'info3@example.ru',
-    state: 'UNREG',
+    state: 'REG',
+    invited: true,
+    blocked: true,
+  },
+  {
+    id: '4',
+    userName: 'Компания 4',
+    inn: 12345672,
+    email: 'info3@example.ru',
+    state: 'REG',
+    invited: true,
+    blocked: true,
+    accreditation: true,
   },
 ]
 
@@ -74,6 +89,13 @@ const newLizingCompany: LizingCompany = {
 let parsedClients: ClientEntity[] = []
 const refreshClients = () => {
   parsedClients = clients.map((client) => ClientEntity.parse(client))
+}
+
+let parsedLizingCompanies: LizingCompanyEntity[] = []
+const refreshLizingCompanies = () => {
+  parsedLizingCompanies = lizingCompanies.map((lk) =>
+    LizingCompanyEntity.parse(lk)
+  )
 }
 
 class UserService {
@@ -95,37 +117,67 @@ class UserService {
       email,
       id: '10',
     })
-    console.log('add', newUser)
+    console.log('addclient', newUser)
     clients.push(newUser)
     return Promise.resolve(newUser.id)
   }
 
   async updateClient(client: User): Promise<string> {
-    console.log('update', client)
+    console.log('update client', client)
     return Promise.resolve(client.id)
   }
 
   async inviteClient(id: string): Promise<string> {
-    console.log('invite', id)
+    console.log('invite client', id)
     return Promise.resolve(id)
   }
 
   async deleteClient(id: string): Promise<string> {
-    console.log('delete', id)
+    console.log('delete client', id)
     return Promise.resolve(id)
   }
 
   async getLizingCompanies(): Promise<LizingCompanyEntity[]> {
-    return Promise.resolve(
-      lizingCompanies.map((lizingCompany) =>
-        LizingCompanyEntity.parse(lizingCompany)
-      )
-    )
+    console.log('getLizingCompanies')
+    refreshLizingCompanies()
+    return Promise.resolve(parsedLizingCompanies)
   }
 
-  async addLizingCompany(): Promise<string> {
-    lizingCompanies.push(newLizingCompany)
-    return Promise.resolve(newLizingCompany.id)
+  async addLizingCompany(
+    userName: string,
+    inn: number,
+    email: string
+  ): Promise<string> {
+    const newUser = ClientEntity.parse({
+      ...newLizingCompany,
+      userName,
+      inn,
+      email,
+      id: '10',
+    })
+    console.log('add lizing company', newUser)
+    lizingCompanies.push(newUser)
+    return Promise.resolve(newUser.id)
+  }
+
+  async updateLizingCompany(lizingCompany: LizingCompany): Promise<string> {
+    console.log('update lizling company', lizingCompany)
+    return Promise.resolve(lizingCompany.id)
+  }
+
+  async inviteLizingCompany(id: string): Promise<string> {
+    console.log('invite lizing company', id)
+    return Promise.resolve(id)
+  }
+
+  async deleteLizingCompany(id: string): Promise<string> {
+    console.log('delete lizing company', id)
+    return Promise.resolve(id)
+  }
+
+  async downloadAgreement(id: string): Promise<void> {
+    console.log('download agreement', id)
+    return Promise.resolve()
   }
 }
 

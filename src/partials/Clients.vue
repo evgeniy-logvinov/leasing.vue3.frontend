@@ -50,7 +50,7 @@
       client.description = description
       await userService.updateClient(client)
     } else {
-      throw Error(t('clients.exists'))
+      throw Error(t('client.exists'))
     }
   }
 
@@ -75,7 +75,7 @@
   <el-row>
     <el-col>
       <el-button type="primary" @click="dialogAddVisible = true">{{
-        t('addClient')
+        t('client.add')
       }}</el-button>
     </el-col>
   </el-row>

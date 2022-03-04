@@ -34,7 +34,8 @@
     },
     "addNew": {
       "title": ""
-    }
+    },
+    "add": ""
   },
   "yes": "",
   "no": "",
@@ -42,5 +43,12 @@
   "cancel": "",
   "request": {
     "send": ""
+  },
+  "accredetation": "",
+  "lizingCompany": {
+    "not": {
+      "exists": ""
+    },
+    "add": ""
   }
 }

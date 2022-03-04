@@ -54,5 +54,12 @@
       "invite": "",
       "delete": ""
     }
+  },
+  "created": "",
+  "checking": "",
+  "checked": "",
+  "order": {
+    "uniqNumber": "",
+    "type": ""
   }
 }

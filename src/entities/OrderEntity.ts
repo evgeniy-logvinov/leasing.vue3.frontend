@@ -1,20 +1,15 @@
 import { i18n } from '~/i18n'
-import {
-  Application,
-  ApplicationColor,
-  ApplicationState,
-  IApplication,
-} from '~/types'
+import { Order, OrderColor, OrderState, IOrder } from '~/types'
 
-export class ApplicationEntity implements IApplication {
+export class OrderEntity implements IOrder {
   private readonly _displayState: string
 
   constructor(
     private readonly _id: string,
     private readonly _type: string,
-    private readonly _state: ApplicationState,
+    private readonly _state: OrderState,
     private _date: string,
-    private _color: ApplicationColor
+    private _color: OrderColor
   ) {
     this._displayState = this.getState(this._state)
   }
@@ -27,11 +22,11 @@ export class ApplicationEntity implements IApplication {
     return this._type
   }
 
-  public get state(): ApplicationState {
+  public get state(): OrderState {
     return this._state
   }
 
-  public get color(): ApplicationColor {
+  public get color(): OrderColor {
     return this._color
   }
 
@@ -43,7 +38,7 @@ export class ApplicationEntity implements IApplication {
     return this._displayState
   }
 
-  private getState(state: ApplicationState) {
+  private getState(state: OrderState) {
     if (state === 'CREATED') {
       return i18n.global.t('created')
     } else if (state === 'CHECKING') {
@@ -55,8 +50,8 @@ export class ApplicationEntity implements IApplication {
     return ''
   }
 
-  public static parse(proto: Application) {
-    return new ApplicationEntity(
+  public static parse(proto: Order) {
+    return new OrderEntity(
       proto.id,
       proto.type,
       proto.state,

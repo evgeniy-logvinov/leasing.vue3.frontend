@@ -1,7 +1,7 @@
-import { ApplicationEntity } from '~/entities'
-import { Application } from '~/types'
+import { OrderEntity } from '~/entities'
+import { Order } from '~/types'
 
-const applications: Application[] = [
+const orders: Order[] = [
   {
     id: '1',
     state: 'CREATED',
@@ -25,17 +25,17 @@ const applications: Application[] = [
   },
 ]
 
-let parsedApplications: ApplicationEntity[] = []
-const refreshApplications = () => {
-  parsedApplications = applications.map((app) => ApplicationEntity.parse(app))
+let parsedOrders: OrderEntity[] = []
+const refreshOrders = () => {
+  parsedOrders = orders.map((app) => OrderEntity.parse(app))
 }
 
-class ApplicationService {
-  async getApplications(): Promise<ApplicationEntity[]> {
-    console.log('getApplications')
-    refreshApplications()
-    return Promise.resolve(parsedApplications)
+class OrderService {
+  async getOrders(): Promise<OrderEntity[]> {
+    console.log('getOrders')
+    refreshOrders()
+    return Promise.resolve(parsedOrders)
   }
 }
 
-export const applicationService = new ApplicationService()
+export const orderService = new OrderService()

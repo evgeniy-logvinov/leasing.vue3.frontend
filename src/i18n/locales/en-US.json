@@ -38,5 +38,9 @@
   },
   "yes": "",
   "no": "",
-  "email": ""
+  "email": "",
+  "cancel": "",
+  "request": {
+    "send": ""
+  }
 }

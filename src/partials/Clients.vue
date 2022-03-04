@@ -1,19 +1,15 @@
 <script setup lang="ts">
-  import { computed, onMounted, ref } from 'vue'
-  import { ElRow, ElCol, ElButton, ElDialog, ElInput } from 'element-plus'
+  import { onMounted, ref } from 'vue'
+  import { ElRow, ElCol, ElButton } from 'element-plus'
   import { userService } from '~/services/userService'
   import { useI18n } from 'vue-i18n'
   import ClientsTable from '~/forms/ClientsTable.vue'
   import { IUser, NewUser } from '~/types'
   import { i18n } from '~/i18n'
-  // TODO: debounce
+  import AddUser from '~/forms/AddUser.vue'
+  // TODO: debounce for description
 
   const clients = ref<IUser[]>([])
-  const newClient = ref<NewUser>({
-    email: null,
-    inn: null,
-    userName: null,
-  })
   const dialogAddVisible = ref<boolean>(false)
   const { t } = useI18n()
 
@@ -71,51 +67,11 @@
     clients.value = await userService.getClients()
   }
 
-  const notEmptyClient = computed(
-    () =>
-      !newClient.value.userName ||
-      !newClient.value.inn ||
-      !newClient.value.email
-  )
-
   onMounted(async () => getClients())
 </script>
 
 <template>
-  <el-dialog v-model="dialogAddVisible" :title="t('client.addNew.title')">
-    <el-row class="mb-8">
-      <el-col>
-        <el-input
-          v-model="newClient.userName"
-          :placeholder="t('name')"
-        ></el-input>
-      </el-col>
-    </el-row>
-    <el-row class="mb-8">
-      <el-col>
-        <el-input v-model="newClient.inn" :placeholder="t('inn')"></el-input>
-      </el-col>
-    </el-row>
-    <el-row>
-      <el-col>
-        <el-input
-          v-model="newClient.email"
-          :placeholder="t('email')"
-        ></el-input>
-      </el-col>
-    </el-row>
-    <template #footer>
-      <span class="dialog-footer">
-        <el-button @click="dialogAddVisible = false">Cancel</el-button>
-        <el-button
-          type="primary"
-          :disabled="notEmptyClient"
-          @click="addClient(newClient)"
-          >Confirm</el-button
-        >
-      </span>
-    </template>
-  </el-dialog>
+  <add-user v-model="dialogAddVisible" @add="addClient"></add-user>
   <el-row>
     <el-col>
       <el-button type="primary" @click="dialogAddVisible = true">{{

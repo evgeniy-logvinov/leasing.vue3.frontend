@@ -38,5 +38,9 @@
   },
   "yes": "Да",
   "no": "Нет",
-  "email": "Email"
+  "email": "Email",
+  "cancel": "Отмена",
+  "request": {
+    "send": "Выслать приглашение"
+  }
 }

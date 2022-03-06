@@ -65,9 +65,17 @@
   "approved": {
     "with": {
       "conditions": "Одобрено с отклонениями"
-    }
+    },
+    "all": "Одобрено"
   },
   "dissapproved": "Отклонено по причине",
   "unknown": "Неизвестно",
-  "details": "Детали"
+  "details": "Детали",
+  "companyName": "Название ЛК",
+  "decision": "Решение",
+  "topFive": "Топ 5",
+  "analitic": "Аналитик",
+  "time": "Время",
+  "manager": "Менеджер",
+  "back": "Назад"
 }

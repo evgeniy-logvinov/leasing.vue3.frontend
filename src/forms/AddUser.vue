@@ -26,7 +26,7 @@
     () => props.modelValue,
     (showDialog) => {
       dialogAddVisible.value = showDialog
-      console.log(`count is: ${showDialog}`)
+      console.log(`value is: ${showDialog}`)
     },
     { immediate: true }
   )

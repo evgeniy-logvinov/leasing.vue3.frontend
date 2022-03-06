@@ -13,7 +13,6 @@
   }>()
   const { orders } = toRefs(props)
   const rowClick = (row: IOrder) => {
-    console.log('row click', row)
     router.push({ name: 'details', params: { id: row.id } })
   }
 </script>

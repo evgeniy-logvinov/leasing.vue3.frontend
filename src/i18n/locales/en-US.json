@@ -65,9 +65,17 @@
   "approved": {
     "with": {
       "conditions": ""
-    }
+    },
+    "all": ""
   },
   "dissapproved": "",
   "unknown": "",
-  "details": ""
+  "details": "",
+  "companyName": "",
+  "decision": "",
+  "topFive": "",
+  "analitic": "",
+  "time": "",
+  "manager": "",
+  "back": ""
 }

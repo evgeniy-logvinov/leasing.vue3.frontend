@@ -4,7 +4,7 @@ import { DecisionType } from './DecisionType'
 
 export interface IDecision {
   companyName: string
-  decision: DecisionType
+  type: DecisionType
   topFive: DecisionTopFive | null
   analitic: string
   time: string

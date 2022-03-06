@@ -37,7 +37,7 @@ const ordersFullInfo: OrderFull[] = [
       {
         analitic: 'Иванов И. И.',
         companyName: 'ЛК 1',
-        decision: 'APPROVED',
+        type: 'APPROVED',
         manager: 'NO',
         time: '28.12.17',
         topFive: 'YES',
@@ -45,7 +45,7 @@ const ordersFullInfo: OrderFull[] = [
       {
         analitic: 'Иванов И. И.',
         companyName: 'ЛК 2',
-        decision: 'APPROVED',
+        type: 'APPROVED',
         manager: 'UNKNOWN',
         time: '28.12.17',
         topFive: 'UNKNOWN',
@@ -53,7 +53,7 @@ const ordersFullInfo: OrderFull[] = [
       {
         analitic: 'Иванов И. И.',
         companyName: 'ЛК 2',
-        decision: 'APPROVED',
+        type: 'APPROVED',
         manager: 'UNKNOWN',
         time: '28.12.17',
         topFive: null,
@@ -71,7 +71,7 @@ const ordersFullInfo: OrderFull[] = [
       {
         analitic: 'Иванов И. И.',
         companyName: 'ЛК 1',
-        decision: 'APPROVED',
+        type: 'APPROVED',
         manager: 'NO',
         time: '28.12.17',
         topFive: 'YES',
@@ -79,7 +79,7 @@ const ordersFullInfo: OrderFull[] = [
       {
         analitic: 'Иванов И. И.',
         companyName: 'ЛК 2',
-        decision: 'APPROVED',
+        type: 'APPROVED',
         manager: 'UNKNOWN',
         time: '28.12.17',
         topFive: 'UNKNOWN',
@@ -87,7 +87,7 @@ const ordersFullInfo: OrderFull[] = [
       {
         analitic: 'Иванов И. И.',
         companyName: 'ЛК 2',
-        decision: 'APPROVED',
+        type: 'APPROVED',
         manager: 'UNKNOWN',
         time: '28.12.17',
         topFive: null,
@@ -105,7 +105,7 @@ const ordersFullInfo: OrderFull[] = [
       {
         analitic: 'Иванов И. И.',
         companyName: 'ЛК 1',
-        decision: 'APPROVED',
+        type: 'APPROVED',
         manager: 'NO',
         time: '28.12.17',
         topFive: 'YES',
@@ -113,7 +113,7 @@ const ordersFullInfo: OrderFull[] = [
       {
         analitic: 'Иванов И. И.',
         companyName: 'ЛК 2',
-        decision: 'APPROVED',
+        type: 'APPROVED',
         manager: 'UNKNOWN',
         time: '28.12.17',
         topFive: 'UNKNOWN',
@@ -121,7 +121,7 @@ const ordersFullInfo: OrderFull[] = [
       {
         analitic: 'Иванов И. И.',
         companyName: 'ЛК 2',
-        decision: 'APPROVED',
+        type: 'APPROVED',
         manager: 'UNKNOWN',
         time: '28.12.17',
         topFive: null,

@@ -1,31 +1,38 @@
 import { i18n } from '~/i18n'
-import { DecisionTopFive, DecisionType, Decision } from '~/types'
+import {
+  DecisionTopFive,
+  DecisionType,
+  Decision,
+  DecisionManager,
+} from '~/types'
 import { IDecision } from '~/types/IDecision'
 
 export class DecisionEntity implements IDecision {
   private readonly _displayTime: string
-  private readonly _displayDecisionType: string
-  private readonly _displayDecisionTopFive: string
+  private readonly _displayType: string
+  private readonly _displayTopFive: string
+  private readonly _displayManager: string
 
   constructor(
     private readonly _companyName: string,
-    private readonly _decision: DecisionType,
+    private readonly _type: DecisionType,
     private readonly _topFive: DecisionTopFive | null,
     private readonly _analitic: string,
     private readonly _time: string,
-    private readonly _manager: string
+    private readonly _manager: DecisionManager | string
   ) {
     this._displayTime = _time + 'TM'
-    this._displayDecisionType = this.getDecisionType(this._decision)
-    this._displayDecisionTopFive = this.getDecisionTopFive(this.topFive)
+    this._displayType = this.getDecisionType(this._type)
+    this._displayTopFive = this.getDecisionTopFive(this._topFive)
+    this._displayManager = this.getDecisionManager(this._manager)
   }
 
   public get companyName(): string {
     return this._companyName
   }
 
-  public get decision(): DecisionType {
-    return this._decision
+  public get type(): DecisionType {
+    return this._type
   }
 
   public get topFive(): DecisionTopFive | null {
@@ -40,44 +47,58 @@ export class DecisionEntity implements IDecision {
     return this._time
   }
 
-  public get manager(): string {
+  public get manager(): DecisionManager | string {
     return this._manager
   }
 
-  public get displayDecisionType(): string {
-    return this._displayDecisionType
+  public get displayType(): string {
+    return this._displayType
   }
 
-  public get displayDecisionTopFive(): string {
-    return this._displayDecisionTopFive
+  public get displayTopFive(): string {
+    return this._displayTopFive
   }
 
-  private getDecisionType(type: DecisionType) {
+  public get displayManager(): string {
+    return this._displayManager
+  }
+
+  private getDecisionType(type: DecisionType): string {
     if (type === 'APPROVED') {
-      return i18n.global.t('approved')
+      return i18n.global.t('approved.all')
     } else if (type === 'APPROVED_WITH_CONDITIONS') {
       return i18n.global.t('approved.with.conditions')
     } else if (type === 'DISAPPROVED') {
       return i18n.global.t('dissapproved')
     }
 
-    return ''
+    return type
   }
 
-  private getDecisionTopFive(topFive: DecisionTopFive | null) {
+  private getDecisionManager(manager: DecisionManager | string): string {
+    if (manager === 'UNKNOWN') {
+      return i18n.global.t('unknown')
+    } else if (manager === 'NO') {
+      return i18n.global.t('no')
+    }
+
+    return manager
+  }
+
+  private getDecisionTopFive(topFive: DecisionTopFive | null): string {
     if (topFive === 'UNKNOWN') {
       return i18n.global.t('unknown')
     } else if (topFive === 'YES') {
       return i18n.global.t('yes')
     }
 
-    return ''
+    return topFive || ''
   }
 
   public static parse(proto: Decision) {
     return new DecisionEntity(
       proto.companyName,
-      proto.decision,
+      proto.type,
       proto.topFive,
       proto.analitic,
       proto.time,

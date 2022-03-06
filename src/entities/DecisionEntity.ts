@@ -1,11 +1,11 @@
 import { i18n } from '~/i18n'
 import {
+  IDecision,
   DecisionTopFive,
   DecisionType,
   Decision,
   DecisionManager,
 } from '~/types'
-import { IDecision } from '~/types/IDecision'
 
 export class DecisionEntity implements IDecision {
   private readonly _displayTime: string

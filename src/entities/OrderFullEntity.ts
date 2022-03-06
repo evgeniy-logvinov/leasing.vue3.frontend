@@ -1,5 +1,10 @@
-import { Decision, OrderColor, OrderFull, OrderState } from '~/types'
-import { IOrderFull } from '~/types'
+import {
+  IOrderFull,
+  Decision,
+  OrderColor,
+  OrderFull,
+  OrderState,
+} from '~/types'
 import { DecisionEntity } from './DecisionEntity'
 import { OrderEntity } from './OrderEntity'
 

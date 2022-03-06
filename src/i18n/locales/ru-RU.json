@@ -77,5 +77,16 @@
   "analitic": "Аналитик",
   "time": "Время",
   "manager": "Менеджер",
-  "back": "Назад"
+  "back": "Назад",
+  "loading": "Загрузка",
+  "analitics": {
+    "headOfDepartment": "Начальник отдела Аналитики",
+    "employees": "Отдел Аналитики"
+  },
+  "sales": {
+    "headOfDepartment": "Начальник отдела продаж",
+    "regions": {
+      "managers": "Региональные менеджеры"
+    }
+  }
 }

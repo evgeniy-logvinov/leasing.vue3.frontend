@@ -77,5 +77,16 @@
   "analitic": "",
   "time": "",
   "manager": "",
-  "back": ""
+  "back": "",
+  "loading": "",
+  "analitics": {
+    "headOfDepartment": "",
+    "employees": ""
+  },
+  "sales": {
+    "headOfDepartment": "",
+    "regions": {
+      "managers": ""
+    }
+  }
 }

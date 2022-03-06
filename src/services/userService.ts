@@ -1,6 +1,5 @@
-import { ClientEntity } from '~/entities/ClientEntity'
-import { LizingCompanyEntity } from '~/entities/LizingCompanyEntity'
-import { Client, LizingCompany, User } from '~/types'
+import { LizingCompanyEntity, ClientEntity } from '~/entities'
+import { Client, LizingCompany, User, LizingCompanyEmployees } from '~/types'
 
 const clients: Client[] = [
   {
@@ -77,6 +76,58 @@ const lizingCompanies: LizingCompany[] = [
     accreditation: true,
   },
 ]
+
+const lizingCompanyEmployees: LizingCompanyEmployees = {
+  id: '1',
+  analitics: {
+    headOfDepartment: 'Логвинов Е.К',
+    employees: [
+      {
+        id: '1',
+        fio: 'Логвинов Евгений Константинович',
+      },
+      {
+        id: '2',
+        fio: 'Логвинов Артем Константинович',
+      },
+    ],
+  },
+  sales: {
+    headOfDepartment: 'Логвинов Е.К',
+    regions: [
+      {
+        id: '1',
+        name: 'Екатеринбург',
+        headOfDepartment: 'Логвинова О. В.',
+        employees: [
+          {
+            id: '1',
+            fio: 'Логвинов Евгений Константинович',
+          },
+          {
+            id: '2',
+            fio: 'Логвинов Артем Константинович',
+          },
+        ],
+      },
+      {
+        id: '2',
+        name: 'Челябинск',
+        headOfDepartment: 'Логвинова О. В.',
+        employees: [
+          {
+            id: '1',
+            fio: 'Логвинов Евгений Константинович',
+          },
+          {
+            id: '2',
+            fio: 'Логвинов Артем Константинович',
+          },
+        ],
+      },
+    ],
+  },
+}
 
 const newLizingCompany: LizingCompany = {
   id: `${lizingCompanies.length}`,
@@ -178,6 +229,11 @@ class UserService {
   async downloadAgreement(id: string): Promise<void> {
     console.log('download agreement', id)
     return Promise.resolve()
+  }
+
+  async getLizingCompanyEmployees(id: string): Promise<LizingCompanyEmployees> {
+    console.log('getLizingCompanyEmployees', id)
+    return Promise.resolve(lizingCompanyEmployees)
   }
 }
 

@@ -1,5 +1,4 @@
-import { OrderEntity } from '~/entities'
-import { OrderFullEntity } from '~/entities/OrderFullEntity'
+import { OrderEntity, OrderFullEntity } from '~/entities'
 import { Order, OrderFull } from '~/types'
 
 const orders: Order[] = [

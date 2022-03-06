@@ -4,7 +4,6 @@
   import { userService } from '~/services'
   import { useI18n } from 'vue-i18n'
   import { ILizingCompany, NewUser } from '~/types'
-  import { i18n } from '~/i18n'
   import AddUser from '~/forms/AddUser.vue'
   import LizingCompaniesTable from '~/forms/LizingCompaniesTable.vue'
   // TODO: debounce for description

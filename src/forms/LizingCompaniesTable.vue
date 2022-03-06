@@ -10,6 +10,7 @@
   } from 'element-plus'
   import { useI18n } from 'vue-i18n'
   import { ILizingCompany } from '~/types'
+  import LizingCompaniesEmployees from './LizingCompaniesEmployees.vue'
   // TODO: handle on change to prevent a lot of requests
 
   const emit = defineEmits<{
@@ -44,6 +45,13 @@
     highlight-current-row
     :default-sort="{ prop: 'userName', order: 'ascending' }"
   >
+    <el-table-column type="expand">
+      <template #default="{ row }">
+        <lizing-companies-employees
+          :company-id="row.id"
+        ></lizing-companies-employees>
+      </template>
+    </el-table-column>
     <el-table-column type="index" width="30" />
     <el-table-column :label="t('name')" prop="userName" sortable width="140">
     </el-table-column>

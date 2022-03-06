@@ -1,6 +1,5 @@
-import { LizingCompany, UserState } from '~/types'
+import { LizingCompany, UserState, ILizingCompany } from '~/types'
 import { UserEntity } from '~/entities'
-import { ILizingCompany } from '~/types'
 
 export class LizingCompanyEntity extends UserEntity implements ILizingCompany {
   constructor(

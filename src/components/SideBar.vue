@@ -5,11 +5,11 @@
     :collapse="isCollapse"
     router
   >
-    <el-menu-item index="/private/users" route="users">
+    <el-menu-item index="/private/users" :route="{ name: 'users' }">
       <el-icon><avatar /></el-icon>
       <template #title> Пользователи </template>
     </el-menu-item>
-    <el-menu-item index="/private/orders" route="orders">
+    <el-menu-item index="/private/orders" :route="{ name: 'orders' }">
       <el-icon><grid /></el-icon>
       <template #title> Заявки </template>
     </el-menu-item>

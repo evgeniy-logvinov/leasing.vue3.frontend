@@ -23,8 +23,27 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: 'orders',
         name: 'orders',
+        redirect: { name: 'all' },
         component: () =>
           import(/* webpackChunkName: "orders" */ '../views/OrdersPage.vue'),
+        children: [
+          {
+            path: 'all',
+            name: 'all',
+            component: () =>
+              import(
+                /* webpackChunkName: "orders-all" */ '../views/OrdersAll.vue'
+              ),
+          },
+          {
+            path: 'details/:id',
+            name: 'details',
+            component: () =>
+              import(
+                /* webpackChunkName: "orders-details" */ '../views/OrdersDetails.vue'
+              ),
+          },
+        ],
       },
       {
         path: 'statistics',

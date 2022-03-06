@@ -1,7 +1,3 @@
-<script setup lang="ts">
-  import Orders from '~/partials/Orders.vue'
-</script>
-
 <template>
-  <orders></orders>
+  <router-view></router-view>
 </template>

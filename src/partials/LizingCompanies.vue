@@ -19,7 +19,7 @@
     if (lizingCompany) {
       lizingCompany.invited = !lizingCompany.invited
     } else {
-      throw Error(i18n.global.t('lizingCompany.not.exists'))
+      throw Error(t('lizingCompany.not.exists'))
     }
     await userService.inviteLizingCompany(id)
   }
@@ -39,7 +39,7 @@
       lizingCompany.blocked = blocked
       await userService.updateLizingCompany(lizingCompany)
     } else {
-      throw Error(i18n.global.t('lizingCompany.not.exists'))
+      throw Error(t('lizingCompany.not.exists'))
     }
   }
 
@@ -50,7 +50,7 @@
       lizingCompany.accreditation = accreditation
       await userService.updateLizingCompany(lizingCompany)
     } else {
-      throw Error(i18n.global.t('lizingCompany.not.exists'))
+      throw Error(t('lizingCompany.not.exists'))
     }
   }
 

@@ -61,5 +61,13 @@
   "order": {
     "uniqNumber": "",
     "type": ""
-  }
+  },
+  "approved": {
+    "with": {
+      "conditions": ""
+    }
+  },
+  "dissapproved": "",
+  "unknown": "",
+  "details": ""
 }

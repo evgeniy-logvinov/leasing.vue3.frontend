@@ -5,7 +5,6 @@
   import { useI18n } from 'vue-i18n'
   import ClientsTable from '~/forms/ClientsTable.vue'
   import { IUser, NewUser } from '~/types'
-  import { i18n } from '~/i18n'
   import AddUser from '~/forms/AddUser.vue'
   // TODO: debounce for description
 
@@ -19,7 +18,7 @@
     if (client) {
       client.invited = !client.invited
     } else {
-      throw Error(i18n.global.t('client.not.exists'))
+      throw Error(t('client.not.exists'))
     }
     await userService.inviteClient(id)
   }
@@ -39,7 +38,7 @@
       client.blocked = blocked
       await userService.updateClient(client)
     } else {
-      throw Error(i18n.global.t('client.not.exists'))
+      throw Error(t('client.not.exists'))
     }
   }
 

@@ -13,7 +13,7 @@
       <el-icon><grid /></el-icon>
       <template #title> Заявки </template>
     </el-menu-item>
-    <el-menu-item index="/private/statistics" route="statistics">
+    <el-menu-item index="/private/statistics" :route="{ name: 'statistics' }">
       <el-icon><pie-chart /></el-icon>
       <template #title> Статистика </template>
     </el-menu-item>

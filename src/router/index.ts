@@ -21,6 +21,26 @@ const routes: Array<RouteRecordRaw> = [
           import(/* webpackChunkName: "users" */ '../views/Users.vue'),
       },
       {
+        path: 'filter',
+        name: 'filter',
+        component: () =>
+          import(/* webpackChunkName: "filter" */ '../views/Filter.vue'),
+      },
+      {
+        path: 'employees',
+        name: 'employees',
+        component: () =>
+          import(/* webpackChunkName: "employees" */ '../views/Users.vue'),
+      },
+      {
+        path: 'company-profile',
+        name: 'companyProfile',
+        component: () =>
+          import(
+            /* webpackChunkName: "company-profile" */ '../views/Users.vue'
+          ),
+      },
+      {
         path: 'orders',
         name: 'orders',
         redirect: { name: 'all' },

@@ -88,5 +88,27 @@
     "regions": {
       "managers": "Региональные менеджеры"
     }
-  }
+  },
+  "filter": {
+    "title": "Фильтр предпочтений ЛК",
+    "chooseCitiesAndTerritories": "Укажите города присутсвия и территорию клиентского охвата",
+    "zato": "В т.ч. ЗАТО",
+    "noZato": "Кроме ЗАТО",
+    "customerTerritoryCoverage": "Территория клиентского охвата",
+    "doYouHaveGK": "У Вас ГК (есть другая(-ие) ЛК)",
+    "short": "Фильтр",
+    "chooseTypeFinancialAsset": "Выберите типы финансируемого имущества"
+  },
+  "chooseCity": "Выберите город",
+  "users": "Пользователи",
+  "employees": "Штат",
+  "companyProfile": "Анкета компании",
+  "orders": "Заявки",
+  "statistics": "Статистика",
+  "add": "Добавить",
+  "taxationSystem": "Система налогообложения",
+  "usn": "УСН",
+  "ecchn": "ЕСЧН",
+  "envd": "ЕНВД",
+  "osn": "ОСН"
 }

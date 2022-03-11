@@ -88,5 +88,27 @@
     "regions": {
       "managers": ""
     }
-  }
+  },
+  "filter": {
+    "title": "",
+    "chooseCitiesAndTerritories": "",
+    "zato": "",
+    "noZato": "",
+    "customerTerritoryCoverage": "",
+    "doYouHaveGK": "",
+    "short": "",
+    "chooseTypeFinancialAsset": ""
+  },
+  "chooseCity": "",
+  "users": "",
+  "employees": "",
+  "companyProfile": "",
+  "orders": "",
+  "statistics": "",
+  "add": "",
+  "taxationSystem": "",
+  "usn": "",
+  "ecchn": "",
+  "envd": "",
+  "osn": ""
 }

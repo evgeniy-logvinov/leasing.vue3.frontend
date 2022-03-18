@@ -89,7 +89,7 @@
       "managers": "Региональные менеджеры"
     }
   },
-  "filter": {
+  "preferenceFilter": {
     "title": "Фильтр предпочтений ЛК",
     "chooseCitiesAndTerritories": "Укажите города присутсвия и территорию клиентского охвата",
     "zato": "В т.ч. ЗАТО",
@@ -97,7 +97,36 @@
     "customerTerritoryCoverage": "Территория клиентского охвата",
     "doYouHaveGK": "У Вас ГК (есть другая(-ие) ЛК)",
     "short": "Фильтр",
-    "chooseTypeFinancialAsset": "Выберите типы финансируемого имущества"
+    "chooseTypeFinancialAsset": "Выберите типы финансируемого имущества",
+    "guaranteePossible": "Возможно ли поручительство иного хозяйствующего субьекта",
+    "onlyAffiliatedCompanies": "Только от аффелированных компаний",
+    "forAllSubjects": "От любых хозяйствующих субьектов",
+    "car": "Легковой автомобиль",
+    "lightСommercialЕransport": "Легкий коммерческий транспорт",
+    "osn": "ОСН",
+    "registrationRange": "",
+    "monthes": "месяцев",
+    "usn": "УСН",
+    "envd": "ЕНВД",
+    "echn": "ЕСХН",
+    "psn": "ПСН",
+    "priceRange": {
+      "from": "Стоимость от",
+      "to": "руб. до",
+      "oneItem": "руб. за единицу"
+    },
+    "fillPrice": "Общая стоимость не более",
+    "currency": "рублей.",
+    "hasNotConditions": "Нет ограничений",
+    "minAdvanceAmount": "Минимальный размер аванса",
+    "maxPeriodFinancing": "Максимальный срок финансирования",
+    "forTaxi": "Для целей такси - ОКВЭД 49.32",
+    "noMore": "не более",
+    "legalEntity": "Юридическое лицо",
+    "monthesOnTheEndOfLizing": "месяцев на момент окончания договора лизинга",
+    "new": "Новые",
+    "used": "БУ",
+    "returnable": "Возвратный"
   },
   "chooseCity": "Выберите город",
   "users": "Пользователи",
@@ -110,5 +139,14 @@
   "usn": "УСН",
   "ecchn": "ЕСЧН",
   "envd": "ЕНВД",
-  "osn": "ОСН"
+  "osn": "ОСН",
+  "car": "Легковой автомобиль",
+  "lightСommercialЕransport": "Легкий коммерческий транспорт",
+  "emptyData": "Данные отсутсвуют",
+  "typeSomething": "Введите значение",
+  "month": {
+    "short": "мес."
+  },
+  "saveAndExit": "Сохранить и выйти",
+  "saveAndContinue": "Сохранить и продолжить"
 }

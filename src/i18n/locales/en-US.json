@@ -89,7 +89,7 @@
       "managers": ""
     }
   },
-  "filter": {
+  "preferenceFilter": {
     "title": "",
     "chooseCitiesAndTerritories": "",
     "zato": "",
@@ -97,7 +97,36 @@
     "customerTerritoryCoverage": "",
     "doYouHaveGK": "",
     "short": "",
-    "chooseTypeFinancialAsset": ""
+    "chooseTypeFinancialAsset": "",
+    "guaranteePossible": "",
+    "onlyAffiliatedCompanies": "",
+    "forAllSubjects": "",
+    "car": "",
+    "lightСommercialЕransport": "",
+    "osn": "",
+    "registrationRange": "",
+    "monthes": "",
+    "usn": "",
+    "envd": "",
+    "echn": "",
+    "psn": "",
+    "priceRange": {
+      "from": "",
+      "to": "",
+      "oneItem": ""
+    },
+    "fillPrice": "",
+    "currency": "",
+    "hasNotConditions": "",
+    "minAdvanceAmount": "",
+    "maxPeriodFinancing": "",
+    "forTaxi": "",
+    "noMore": "",
+    "legalEntity": "",
+    "monthesOnTheEndOfLizing": "",
+    "new": "",
+    "used": "",
+    "returnable": ""
   },
   "chooseCity": "",
   "users": "",
@@ -110,5 +139,14 @@
   "usn": "",
   "ecchn": "",
   "envd": "",
-  "osn": ""
+  "osn": "",
+  "car": "",
+  "lightСommercialЕransport": "",
+  "emptyData": "",
+  "typeSomething": "",
+  "month": {
+    "short": ""
+  },
+  "saveAndExit": "",
+  "saveAndContinue": ""
 }

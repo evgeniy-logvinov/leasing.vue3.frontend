@@ -9,9 +9,12 @@
       <el-icon><avatar /></el-icon>
       <template #title> {{ t('users') }}</template>
     </el-menu-item>
-    <el-menu-item index="/private/filter" :route="{ name: 'filter' }">
+    <el-menu-item
+      index="/private/preference-filter"
+      :route="{ name: 'preference-filter' }"
+    >
       <el-icon><Filter /></el-icon>
-      <template #title> {{ t('filter.short') }}</template>
+      <template #title> {{ t('preferenceFilter.short') }}</template>
     </el-menu-item>
     <el-menu-item index="/private/employees" :route="{ name: 'employees' }">
       <el-icon><avatar /></el-icon>

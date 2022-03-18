@@ -21,10 +21,31 @@ const routes: Array<RouteRecordRaw> = [
           import(/* webpackChunkName: "users" */ '../views/Users.vue'),
       },
       {
-        path: 'filter',
-        name: 'filter',
+        path: 'preference-filter',
+        name: 'preference-filter',
+        redirect: { name: 'preference-filter-all' },
         component: () =>
-          import(/* webpackChunkName: "filter" */ '../views/Filter.vue'),
+          import(
+            /* webpackChunkName: "preference-filter" */ '../views/PreferenceFilter.vue'
+          ),
+        children: [
+          {
+            path: 'all',
+            name: 'preference-filter-all',
+            component: () =>
+              import(
+                /* webpackChunkName: "preference-filter-all" */ '../views/PreferenceFilterAll.vue'
+              ),
+          },
+          {
+            path: 'details/:id',
+            name: 'preference-filter-details',
+            component: () =>
+              import(
+                /* webpackChunkName: "preference-filter-details" */ '../views/PreferenceFilterDetails.vue'
+              ),
+          },
+        ],
       },
       {
         path: 'employees',

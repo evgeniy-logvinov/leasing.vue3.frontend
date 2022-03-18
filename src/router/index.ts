@@ -48,17 +48,19 @@ const routes: Array<RouteRecordRaw> = [
         ],
       },
       {
-        path: 'employees',
-        name: 'employees',
+        path: 'heads-of-departments',
+        name: 'headsOfDepartments',
         component: () =>
-          import(/* webpackChunkName: "employees" */ '../views/Users.vue'),
+          import(
+            /* webpackChunkName: "headsOfDepartments" */ '../views/HeadsOfDepartments.vue'
+          ),
       },
       {
         path: 'company-profile',
         name: 'companyProfile',
         component: () =>
           import(
-            /* webpackChunkName: "company-profile" */ '../views/Users.vue'
+            /* webpackChunkName: "company-profile" */ '../views/CompanyProfile.vue'
           ),
       },
       {

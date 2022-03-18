@@ -149,5 +149,10 @@
     "short": ""
   },
   "saveAndExit": "",
-  "saveAndContinue": ""
+  "saveAndContinue": "",
+  "firstName": "",
+  "lastName": "",
+  "secondName": "",
+  "phone": "",
+  "mobilePhone": ""
 }

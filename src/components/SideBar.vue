@@ -16,7 +16,10 @@
       <el-icon><Filter /></el-icon>
       <template #title> {{ t('preferenceFilter.short') }}</template>
     </el-menu-item>
-    <el-menu-item index="/private/employees" :route="{ name: 'employees' }">
+    <el-menu-item
+      index="/private/heads-of-departments"
+      :route="{ name: 'headsOfDepartments' }"
+    >
       <el-icon><avatar /></el-icon>
       <template #title> {{ t('employees') }} </template>
     </el-menu-item>

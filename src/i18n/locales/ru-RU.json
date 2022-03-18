@@ -149,5 +149,10 @@
     "short": "мес."
   },
   "saveAndExit": "Сохранить и выйти",
-  "saveAndContinue": "Сохранить и продолжить"
+  "saveAndContinue": "Сохранить и продолжить",
+  "firstName": "Фамилия",
+  "lastName": "Имя",
+  "secondName": "Отчество",
+  "phone": "Телефон",
+  "mobilePhone": "Мобильный телефон"
 }

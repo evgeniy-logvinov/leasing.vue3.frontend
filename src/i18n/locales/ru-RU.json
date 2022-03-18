@@ -104,7 +104,7 @@
     "car": "Легковой автомобиль",
     "lightСommercialЕransport": "Легкий коммерческий транспорт",
     "osn": "ОСН",
-    "registrationRange": "",
+    "registrationRange": "Срок регистрации",
     "monthes": "месяцев",
     "usn": "УСН",
     "envd": "ЕНВД",
@@ -126,7 +126,8 @@
     "monthesOnTheEndOfLizing": "месяцев на момент окончания договора лизинга",
     "new": "Новые",
     "used": "БУ",
-    "returnable": "Возвратный"
+    "returnable": "Возвратный",
+    "ep": "ИП"
   },
   "chooseCity": "Выберите город",
   "users": "Пользователи",

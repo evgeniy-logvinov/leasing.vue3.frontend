@@ -5,7 +5,7 @@
   import { useI18n } from 'vue-i18n'
   import LegalBusiness from '~/forms/LegalBusiness.vue'
   import EpBusiness from '~/forms/EpBusiness.vue'
-
+  // TODO: disable all functionalities while not cheched
   const { t } = useI18n()
 
   const props = defineProps<{
@@ -34,5 +34,13 @@
       ></el-checkbox> </el-col
   ></el-row>
   <legal-business :data="data.legalEntity"></legal-business>
+  <el-row
+    ><el-col>
+      <el-checkbox
+        v-model="data.ep.checked"
+        :label="t('preferenceFilter.ep')"
+        size="large"
+      ></el-checkbox> </el-col
+  ></el-row>
   <ep-business :data="data.ep"></ep-business>
 </template>

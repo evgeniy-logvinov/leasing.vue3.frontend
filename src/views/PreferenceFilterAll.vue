@@ -9,21 +9,54 @@
   } from 'element-plus'
   import { Tools, Check } from '@element-plus/icons-vue'
   import GKTable from '~/forms/GKTable.vue'
-  import { defineProps, toRefs, defineEmits } from 'vue'
   import { useI18n } from 'vue-i18n'
-  import { PreferenceFilter } from '~/types'
   import { useRouter } from 'vue-router'
+
+  import { onMounted, ref } from 'vue'
+  import { PreferenceFilter } from '~/types'
+  import { GCEntity } from '~/entities'
+  import { preferenceFilterService } from '~/services'
+
+  const data = ref<PreferenceFilter>()
+
+  const getFilter = async () => {
+    data.value = await preferenceFilterService.getPreferenceFilter()
+  }
+
+  onMounted(async () => getFilter())
+
+  const addRow = () => {
+    console.log('addRow')
+    data?.value?.citiesAndTerritories.push({
+      cities: [],
+      territories: [],
+      id: data.value.citiesAndTerritories + '',
+    })
+  }
+
+  const addGc = () => {
+    console.log('addGc')
+    data?.value?.gc.items.push(
+      GCEntity.parse({
+        id: data.value.gc.items + '',
+        accreditation: false,
+        inn: 123,
+        name: 'name',
+        taxationSystem: 'OSN',
+      })
+    )
+  }
+
+  const saveFilter = async () => {
+    if (data.value) {
+      await preferenceFilterService.saveFilter(data.value)
+      console.log(data)
+      await getFilter()
+    }
+  }
 
   const router = useRouter()
   const { t } = useI18n()
-  const emit = defineEmits<{
-    (e: 'addRow'): void
-    (e: 'addGc'): void
-  }>()
-  const props = defineProps<{
-    data?: PreferenceFilter
-  }>()
-  const { data } = toRefs(props)
   const cascaderProps = { multiple: true }
   // TODO: Need to be typed
   const options = [
@@ -55,13 +88,6 @@
       params: { id },
     })
   }
-
-  const saveAndContinue = () => {
-    console.log('continue')
-    // router.push({
-    //   name: 'preference-filter-details',
-    // })
-  }
 </script>
 
 <template>
@@ -81,10 +107,8 @@
           v-model="data.checked"
           :label="t('preferenceFilter.zato')"
           size="large"
-        ></el-checkbox>
-        {{}}</el-col
-      ></el-row
-    >
+        ></el-checkbox></el-col
+    ></el-row>
     <el-row v-for="row in data.citiesAndTerritories" :key="row.id"
       ><el-col>
         <el-cascader
@@ -106,9 +130,7 @@
     ></el-row>
     <el-row
       ><el-col>
-        <el-button type="primary" @click="emit('addRow')">{{
-          t('add')
-        }}</el-button>
+        <el-button type="primary" @click="addRow">{{ t('add') }}</el-button>
       </el-col></el-row
     >
     <el-row
@@ -125,9 +147,7 @@
     <el-row v-if="data.gc.hasGC"
       ><el-col> <g-k-table :gcs="data.gc.items"></g-k-table> </el-col
       ><el-col>
-        <el-button type="primary" @click="emit('addGc')">{{
-          t('add')
-        }}</el-button>
+        <el-button type="primary" @click="addGc">{{ t('add') }}</el-button>
       </el-col></el-row
     >
     <el-row
@@ -138,12 +158,12 @@
     <el-row
       ><el-col>
         <el-checkbox
-          v-model="data.financedTypes.car.checked"
+          v-model="data.financedTypes.car"
           :label="t('preferenceFilter.car')"
           size="large"
         ></el-checkbox>
         <el-button
-          :disabled="!data.financedTypes.car.checked"
+          :disabled="!data.financedTypes.car"
           @click="data && openFinancedType('car')"
         >
           <el-icon><tools /></el-icon
@@ -152,12 +172,12 @@
     <el-row
       ><el-col>
         <el-checkbox
-          v-model="data.financedTypes.lightСommercialTransport.checked"
+          v-model="data.financedTypes.lightСommercialTransport"
           :label="t('preferenceFilter.lightСommercialЕransport')"
           size="large"
         ></el-checkbox>
         <el-button
-          :disabled="!data.financedTypes.lightСommercialTransport.checked"
+          :disabled="!data.financedTypes.lightСommercialTransport"
           @click="data && openFinancedType('lightСommercialTransport')"
         >
           <el-icon><tools /></el-icon
@@ -192,7 +212,7 @@
     ></el-row>
     <el-row
       ><el-col>
-        <el-button type="primary" @click="saveAndContinue">
+        <el-button :disabled="!data" type="primary" @click="saveFilter">
           <el-icon><check /></el-icon>{{ t('saveAndContinue') }}</el-button
         >
       </el-col></el-row

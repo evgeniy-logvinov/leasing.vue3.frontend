@@ -9,7 +9,7 @@
   "accreditation": "Аккредитация",
   "blocked": "Блокирован",
   "description": "Примечание",
-  "lizingCompanies": "Лизинговые компании",
+  "leasingCompanies": "Лизинговые компании",
   "monday": "Понедельник",
   "addClient": "Добавить клиента",
   "to": {
@@ -23,5 +23,160 @@
     "placeholder": "Введите текст"
   },
   "access": "Доступ",
-  "active": "Активен"
+  "active": "Активен",
+  "client": {
+    "not": {
+      "exists": "Пользователь не найден"
+    },
+    "question": {
+      "invite": "Хотите пригласить пользователя? Пользователю будет выслано приглашение",
+      "delete": "Хотите удалить пользователя? Восстановить пользователя будет невозможно"
+    },
+    "addNew": {
+      "title": "Добавление пользователя"
+    },
+    "add": "Добавить пользователя"
+  },
+  "yes": "Да",
+  "no": "Нет",
+  "email": "Email",
+  "cancel": "Отмена",
+  "request": {
+    "send": "Выслать приглашение"
+  },
+  "accredetation": "Аккредитация",
+  "leasingCompany": {
+    "not": {
+      "exists": "Компания отсутсвует"
+    },
+    "add": "Добавить лизинговую компанию",
+    "question": {
+      "invite": "Хотите пригласить лизинговую компанию? Пользователю будет выслано приглашение",
+      "delete": "Хотите удалить лизинговую компанию? Восстановить лизинговую компанию будет невозможно"
+    }
+  },
+  "created": "Создана",
+  "checking": "На рассмотрении",
+  "checked": "Рассмотрено",
+  "order": {
+    "uniqNumber": "Уникальный номер запроса в системе",
+    "type": "Тип обьекта лизинга"
+  },
+  "approved": {
+    "with": {
+      "conditions": "Одобрено с отклонениями"
+    },
+    "all": "Одобрено"
+  },
+  "dissapproved": "Отклонено по причине",
+  "unknown": "Неизвестно",
+  "details": "Детали",
+  "companyName": "Название ЛК",
+  "decision": "Решение",
+  "topFive": "Топ 5",
+  "analitic": "Аналитик",
+  "time": "Время",
+  "manager": "Менеджер",
+  "back": "Назад",
+  "loading": "Загрузка",
+  "analitics": {
+    "headOfDepartment": "Начальник отдела Аналитики",
+    "employees": "Отдел Аналитики"
+  },
+  "sales": {
+    "headOfDepartment": "Начальник отдела продаж",
+    "regions": {
+      "managers": "Региональные менеджеры"
+    }
+  },
+  "preferenceFilter": {
+    "title": "Фильтр предпочтений ЛК",
+    "chooseCitiesAndTerritories": "Укажите города присутсвия и территорию клиентского охвата",
+    "zato": "В т.ч. ЗАТО",
+    "noZato": "Кроме ЗАТО",
+    "customerTerritoryCoverage": "Территория клиентского охвата",
+    "doYouHaveGK": "У Вас ГК (есть другая(-ие) ЛК)",
+    "short": "Фильтр",
+    "chooseTypeFinancialAsset": "Выберите типы финансируемого имущества",
+    "guaranteePossible": "Возможно ли поручительство иного хозяйствующего субьекта",
+    "onlyAffiliatedCompanies": "Только от аффелированных компаний",
+    "forAllSubjects": "От любых хозяйствующих субьектов",
+    "car": "Легковой автомобиль",
+    "lightСommercialЕransport": "Легкий коммерческий транспорт",
+    "osn": "ОСН",
+    "registrationRange": "Срок регистрации",
+    "monthes": "месяцев",
+    "usn": "УСН",
+    "envd": "ЕНВД",
+    "echn": "ЕСХН",
+    "psn": "ПСН",
+    "priceRange": {
+      "from": "Стоимость от",
+      "to": "руб. до",
+      "oneItem": "руб. за единицу"
+    },
+    "fillPrice": "Общая стоимость не более",
+    "currency": "рублей.",
+    "hasNotConditions": "Нет ограничений",
+    "minAdvanceAmount": "Минимальный размер аванса",
+    "maxPeriodFinancing": "Максимальный срок финансирования",
+    "forTaxi": "Для целей такси - ОКВЭД 49.32",
+    "noMore": "не более",
+    "legalEntity": "Юридическое лицо",
+    "monthesOnTheEndOfLeasing": "месяцев на момент окончания договора лизинга",
+    "new": "Новые",
+    "used": "БУ",
+    "returnable": "Возвратный",
+    "ep": "ИП"
+  },
+  "chooseCity": "Выберите город",
+  "users": "Пользователи",
+  "employees": "Штат",
+  "companyProfile": "Анкета компании",
+  "orders": "Заявки",
+  "statistics": "Статистика",
+  "add": "Добавить",
+  "taxationSystem": "Система налогообложения",
+  "usn": "УСН",
+  "ecchn": "ЕСЧН",
+  "envd": "ЕНВД",
+  "osn": "ОСН",
+  "car": "Легковой автомобиль",
+  "lightСommercialЕransport": "Легкий коммерческий транспорт",
+  "emptyData": "Данные отсутсвуют",
+  "typeSomething": "Введите значение",
+  "month": {
+    "short": "мес."
+  },
+  "saveAndExit": "Сохранить и выйти",
+  "saveAndContinue": "Сохранить и продолжить",
+  "firstName": "Фамилия",
+  "lastName": "Имя",
+  "patronymic": "Отчество",
+  "phone": "Телефон",
+  "mobilePhone": "Мобильный телефон",
+  "fullName": "Полное наименование",
+  "shortName": "Краткое наименование",
+  "generalManager": "Генеральный директор",
+  "generalAccountant": "Главный бухгалтер",
+  "legalAddress": "Юридический адрес",
+  "postAddress": "Почтовый адрес",
+  "ogrn": "ОГРН",
+  "okpo": "ОКРО",
+  "kpp": "КПП",
+  "paymentAccount": "Расчетный счет",
+  "fullBankName": "Полное наименование банка",
+  "correspondentAccountBank": "Корреспондентский счет банка",
+  "bik": "БИК",
+  "downloadAgreement": "Скачать договор",
+  "uploadAgreement": "Загрузить договор",
+  "sendAgreement": "Отправить договор",
+  "index": "Индекс",
+  "region": "Область",
+  "city": "Город",
+  "district": "Район",
+  "street": "Улица",
+  "building": "Дом",
+  "corpus": "Корпус",
+  "officeNumber": "Номер офиса"
 }

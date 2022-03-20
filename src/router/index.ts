@@ -21,10 +21,72 @@ const routes: Array<RouteRecordRaw> = [
           import(/* webpackChunkName: "users" */ '../views/Users.vue'),
       },
       {
+        path: 'preference-filter',
+        name: 'preference-filter',
+        redirect: { name: 'preference-filter-all' },
+        component: () =>
+          import(
+            /* webpackChunkName: "preference-filter" */ '../views/PreferenceFilter.vue'
+          ),
+        children: [
+          {
+            path: 'all',
+            name: 'preference-filter-all',
+            component: () =>
+              import(
+                /* webpackChunkName: "preference-filter-all" */ '../views/PreferenceFilterAll.vue'
+              ),
+          },
+          {
+            path: 'details/:id',
+            name: 'preference-filter-details',
+            component: () =>
+              import(
+                /* webpackChunkName: "preference-filter-details" */ '../views/PreferenceFilterDetails.vue'
+              ),
+          },
+        ],
+      },
+      {
+        path: 'heads-of-departments',
+        name: 'headsOfDepartments',
+        component: () =>
+          import(
+            /* webpackChunkName: "headsOfDepartments" */ '../views/HeadsOfDepartments.vue'
+          ),
+      },
+      {
+        path: 'company-profile',
+        name: 'companyProfile',
+        component: () =>
+          import(
+            /* webpackChunkName: "company-profile" */ '../views/CompanyProfile.vue'
+          ),
+      },
+      {
         path: 'orders',
         name: 'orders',
+        redirect: { name: 'all' },
         component: () =>
-          import(/* webpackChunkName: "orders" */ '../views/Orders.vue'),
+          import(/* webpackChunkName: "orders" */ '../views/OrdersPage.vue'),
+        children: [
+          {
+            path: 'all',
+            name: 'all',
+            component: () =>
+              import(
+                /* webpackChunkName: "orders-all" */ '../views/OrdersAll.vue'
+              ),
+          },
+          {
+            path: 'details/:id',
+            name: 'details',
+            component: () =>
+              import(
+                /* webpackChunkName: "orders-details" */ '../views/OrdersDetails.vue'
+              ),
+          },
+        ],
       },
       {
         path: 'statistics',

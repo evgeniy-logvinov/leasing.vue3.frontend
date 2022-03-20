@@ -9,7 +9,7 @@
   "accreditation": "",
   "blocked": "",
   "description": "",
-  "lizingCompanies": "",
+  "leasingCompanies": "",
   "monday": "Monday",
   "addClient": "Add client",
   "to": {
@@ -23,5 +23,160 @@
     "placeholder": ""
   },
   "access": "",
-  "active": ""
+  "active": "",
+  "client": {
+    "not": {
+      "exists": "Client not found"
+    },
+    "question": {
+      "invite": "",
+      "delete": ""
+    },
+    "addNew": {
+      "title": ""
+    },
+    "add": ""
+  },
+  "yes": "",
+  "no": "",
+  "email": "",
+  "cancel": "",
+  "request": {
+    "send": ""
+  },
+  "accredetation": "",
+  "leasingCompany": {
+    "not": {
+      "exists": ""
+    },
+    "add": "",
+    "question": {
+      "invite": "",
+      "delete": ""
+    }
+  },
+  "created": "",
+  "checking": "",
+  "checked": "",
+  "order": {
+    "uniqNumber": "",
+    "type": ""
+  },
+  "approved": {
+    "with": {
+      "conditions": ""
+    },
+    "all": ""
+  },
+  "dissapproved": "",
+  "unknown": "",
+  "details": "",
+  "companyName": "",
+  "decision": "",
+  "topFive": "",
+  "analitic": "",
+  "time": "",
+  "manager": "",
+  "back": "",
+  "loading": "",
+  "analitics": {
+    "headOfDepartment": "",
+    "employees": ""
+  },
+  "sales": {
+    "headOfDepartment": "",
+    "regions": {
+      "managers": ""
+    }
+  },
+  "preferenceFilter": {
+    "title": "",
+    "chooseCitiesAndTerritories": "",
+    "zato": "",
+    "noZato": "",
+    "customerTerritoryCoverage": "",
+    "doYouHaveGK": "",
+    "short": "",
+    "chooseTypeFinancialAsset": "",
+    "guaranteePossible": "",
+    "onlyAffiliatedCompanies": "",
+    "forAllSubjects": "",
+    "car": "",
+    "lightСommercialЕransport": "",
+    "osn": "",
+    "registrationRange": "",
+    "monthes": "",
+    "usn": "",
+    "envd": "",
+    "echn": "",
+    "psn": "",
+    "priceRange": {
+      "from": "",
+      "to": "",
+      "oneItem": ""
+    },
+    "fillPrice": "",
+    "currency": "",
+    "hasNotConditions": "",
+    "minAdvanceAmount": "",
+    "maxPeriodFinancing": "",
+    "forTaxi": "",
+    "noMore": "",
+    "legalEntity": "",
+    "monthesOnTheEndOfLeasing": "",
+    "new": "",
+    "used": "",
+    "returnable": "",
+    "ep": ""
+  },
+  "chooseCity": "",
+  "users": "",
+  "employees": "",
+  "companyProfile": "",
+  "orders": "",
+  "statistics": "",
+  "add": "",
+  "taxationSystem": "",
+  "usn": "",
+  "ecchn": "",
+  "envd": "",
+  "osn": "",
+  "car": "",
+  "lightСommercialЕransport": "",
+  "emptyData": "",
+  "typeSomething": "",
+  "month": {
+    "short": ""
+  },
+  "saveAndExit": "",
+  "saveAndContinue": "",
+  "firstName": "",
+  "lastName": "",
+  "patronymic": "",
+  "phone": "",
+  "mobilePhone": "",
+  "fullName": "",
+  "shortName": "",
+  "generalManager": "",
+  "generalAccountant": "",
+  "legalAddress": "",
+  "postAddress": "",
+  "ogrn": "",
+  "okpo": "",
+  "kpp": "",
+  "paymentAccount": "",
+  "fullBankName": "",
+  "correspondentAccountBank": "",
+  "bik": "",
+  "downloadAgreement": "",
+  "uploadAgreement": "",
+  "sendAgreement": "",
+  "index": "",
+  "region": "",
+  "city": "",
+  "district": "",
+  "street": "",
+  "building": "",
+  "corpus": "",
+  "officeNumber": ""
 }

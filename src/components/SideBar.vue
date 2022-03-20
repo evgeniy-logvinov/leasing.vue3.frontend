@@ -5,25 +5,55 @@
     :collapse="isCollapse"
     router
   >
-    <el-menu-item index="/private/users" route="users">
+    <el-menu-item index="/private/users" :route="{ name: 'users' }">
       <el-icon><avatar /></el-icon>
-      <template #title> Пользователи </template>
+      <template #title> {{ t('users') }}</template>
     </el-menu-item>
-    <el-menu-item index="/private/orders" route="orders">
+    <el-menu-item
+      index="/private/preference-filter"
+      :route="{ name: 'preference-filter' }"
+    >
+      <el-icon><Filter /></el-icon>
+      <template #title> {{ t('preferenceFilter.short') }}</template>
+    </el-menu-item>
+    <el-menu-item
+      index="/private/heads-of-departments"
+      :route="{ name: 'headsOfDepartments' }"
+    >
+      <el-icon><avatar /></el-icon>
+      <template #title> {{ t('employees') }} </template>
+    </el-menu-item>
+    <el-menu-item
+      index="/private/company-profile"
+      :route="{ name: 'companyProfile' }"
+    >
+      <el-icon><postcard /></el-icon>
+      <template #title> {{ t('companyProfile') }} </template>
+    </el-menu-item>
+    <el-menu-item index="/private/orders" :route="{ name: 'orders' }">
       <el-icon><grid /></el-icon>
-      <template #title> Заявки </template>
+      <template #title> {{ t('orders') }}</template>
     </el-menu-item>
-    <el-menu-item index="/private/statistics" route="statistics">
+    <el-menu-item index="/private/statistics" :route="{ name: 'statistics' }">
       <el-icon><pie-chart /></el-icon>
-      <template #title> Статистика </template>
+      <template #title> {{ t('statistics') }}</template>
     </el-menu-item>
   </el-menu>
 </template>
 
 <script lang="ts" setup>
   import { ref } from 'vue'
-  import { Avatar, Grid, PieChart } from '@element-plus/icons-vue'
+  import {
+    Avatar,
+    Filter,
+    Postcard,
+    Grid,
+    PieChart,
+  } from '@element-plus/icons-vue'
   import { ElMenu, ElMenuItem, ElIcon } from 'element-plus'
+  import { useI18n } from 'vue-i18n'
+
+  const { t } = useI18n()
 
   const isCollapse = ref(false)
 </script>

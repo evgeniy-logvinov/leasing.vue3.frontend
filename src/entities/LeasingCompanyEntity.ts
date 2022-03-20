@@ -1,19 +1,20 @@
-import { LizingCompany, UserState } from '~/types'
+import { LeasingCompany, UserState, ILeasingCompany } from '~/types'
 import { UserEntity } from '~/entities'
 
-export class LizingCompanyEntity extends UserEntity {
-  private readonly _displayAccreditation: boolean
-
+export class LeasingCompanyEntity
+  extends UserEntity
+  implements ILeasingCompany
+{
   constructor(
     _id: string,
     _userName: string,
     _inn: number,
     _email: string,
     _state: UserState,
-    private readonly _accreditation?: boolean,
+    private _accreditation = false,
     _blocked = false,
     _invited = false,
-    _description?: string
+    _description = ''
   ) {
     super(
       _id,
@@ -25,15 +26,18 @@ export class LizingCompanyEntity extends UserEntity {
       _invited,
       _description
     )
-    this._displayAccreditation = !!this._accreditation
   }
 
-  public get displayAccreditation(): boolean {
-    return this._displayAccreditation
+  public get accreditation(): boolean {
+    return this._accreditation
   }
 
-  public static parse(proto: LizingCompany) {
-    return new LizingCompanyEntity(
+  public set accreditation(val: boolean) {
+    this._accreditation = val
+  }
+
+  public static parse(proto: LeasingCompany) {
+    return new LeasingCompanyEntity(
       proto.id,
       proto.userName,
       proto.inn,

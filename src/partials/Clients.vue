@@ -1,104 +1,92 @@
 <script setup lang="ts">
   import { onMounted, ref } from 'vue'
-  import {
-    ElTable,
-    ElTableColumn,
-    ElRow,
-    ElCol,
-    ElButton,
-    ElCheckbox,
-    ElInput,
-  } from 'element-plus'
-  import { userService } from '~/services/userService'
+  import { ElRow, ElCol, ElButton } from 'element-plus'
+  import { userService } from '~/services'
   import { useI18n } from 'vue-i18n'
-  import { ClientEntity } from '~/entities/ClientEntity'
-  // TODO: debounce
-  const clients = ref<ClientEntity[]>([])
+  import ClientsTable from '~/forms/ClientsTable.vue'
+  import { IUser, NewUser } from '~/types'
+  import AddUser from '~/forms/AddUser.vue'
+  // TODO: debounce for description
+
+  const clients = ref<IUser[]>([])
+  const dialogAddVisible = ref<boolean>(false)
   const { t } = useI18n()
 
-  const handleInvite = (index: string, row: string) => {
-    console.log('scope.$index, scope.row', index, row)
+  const handleInvite = async (id: string) => {
+    const client = clients.value.find((client) => client.id === id)
+
+    if (client) {
+      client.invited = !client.invited
+    } else {
+      throw Error(t('client.not.exists'))
+    }
+    await userService.inviteClient(id)
   }
 
-  const addClient = async () => {
-    await userService.addClient()
-    await getClients()
+  const handleDelete = async (id: string) => {
+    const index = clients.value.findIndex((client) => client.id === id)
+    if (index) {
+      clients.value.splice(index, 1)
+    }
+    await userService.deleteClient(id)
+  }
+
+  const handleBlocked = async (id: string, blocked: boolean) => {
+    const client = clients.value.find((client) => client.id === id)
+
+    if (client) {
+      client.blocked = blocked
+      await userService.updateClient(client)
+    } else {
+      throw Error(t('client.not.exists'))
+    }
+  }
+
+  const handleDescription = async (id: string, description: string) => {
+    const client = clients.value.find((client) => client.id === id)
+
+    if (client) {
+      client.description = description
+      await userService.updateClient(client)
+    } else {
+      throw Error(t('client.exists'))
+    }
+  }
+
+  const addClient = async ({ email, inn, userName }: NewUser) => {
+    if (email && inn && userName) {
+      await userService.addClient(userName, inn, email)
+      dialogAddVisible.value = false
+      getClients()
+    }
   }
 
   const getClients = async () => {
-    const res = await userService.getClients()
-    clients.value = res
+    clients.value = []
+    clients.value = await userService.getClients()
   }
 
   onMounted(async () => getClients())
 </script>
 
 <template>
+  <add-user v-model="dialogAddVisible" @add="addClient"></add-user>
   <el-row>
     <el-col>
-      <el-button type="primary" @click="addClient">{{
-        t('addClient')
+      <el-button type="primary" @click="dialogAddVisible = true">{{
+        t('client.add')
       }}</el-button>
     </el-col>
   </el-row>
   <el-row>
     <el-col>
-      <el-table
-        :data="clients"
-        highlight-current-row
-        :default-sort="{ prop: 'userName', order: 'ascending' }"
-      >
-        <el-table-column type="index" width="30" />
-        <el-table-column
-          :label="t('name')"
-          prop="userName"
-          sortable
-          width="140"
-        >
-        </el-table-column>
-        <el-table-column prop="inn" :label="t('inn')" width="90">
-        </el-table-column>
-        <el-table-column prop="email" sortable :label="t('address')">
-        </el-table-column>
-        <el-table-column :label="t('invite')" width="120">
-          <template #default="scope">
-            <el-button
-              v-if="scope.row.state === 'UNREG'"
-              key="toInvite"
-              size="small"
-              :disabled="!scope.row.invited"
-              @click="handleInvite(scope.$index, scope.row)"
-              >{{ t('to.invite') }}</el-button
-            >
-            <el-button
-              v-else-if="scope.row.state === 'REG'"
-              key="Invited"
-              size="small"
-              @click="handleInvite(scope.$index, scope.row)"
-              >{{ t('to.delete') }}</el-button
-            >
-          </template>
-        </el-table-column>
-        <el-table-column prop="displayState" :label="t('state')">
-        </el-table-column>
-        <el-table-column prop="blocked" :label="t('access')">
-          <template #default="scope">
-            <el-checkbox
-              :label="t('blocked')"
-              :model-value="scope.row.blocked"
-              size="small"
-            ></el-checkbox>
-          </template>
-        </el-table-column>
-        <el-table-column prop="description" :label="t('description')">
-          <template #default="scope">
-            <el-input
-              v-model="scope.row.displayDescription"
-              :placeholder="t('input.placeholder')"
-            />
-          </template>
-        </el-table-column>
-      </el-table>
+      <clients-table
+        :clients="clients"
+        @invite="handleInvite"
+        @delete="handleDelete"
+        @blocked="handleBlocked"
+        @description="handleDescription"
+      ></clients-table>
     </el-col>
   </el-row>
 </template>

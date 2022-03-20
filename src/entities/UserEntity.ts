@@ -1,8 +1,8 @@
 import { i18n } from '~/i18n'
-import { UserState } from '~/types'
-export abstract class UserEntity {
+import { IUser, UserState } from '~/types'
+
+export abstract class UserEntity implements IUser {
   private readonly _displayState: string
-  private readonly _displayDescription: string
 
   constructor(
     private readonly _id: string,
@@ -10,12 +10,11 @@ export abstract class UserEntity {
     private readonly _inn: number,
     private readonly _email: string,
     private readonly _state: UserState,
-    private readonly _blocked: boolean,
-    private readonly _invited: boolean,
-    private readonly _description?: string
+    private _blocked: boolean,
+    private _invited: boolean,
+    private _description: string
   ) {
     this._displayState = this.getState(this._state)
-    this._displayDescription = this._description || ''
   }
 
   public get id(): string {
@@ -38,16 +37,28 @@ export abstract class UserEntity {
     return this._state
   }
 
-  public get displayDescription(): string {
-    return this._displayDescription
+  public get description(): string {
+    return this._description
+  }
+
+  public set description(val: string) {
+    this._description = val
   }
 
   public get blocked(): boolean {
     return this._blocked
   }
 
+  public set blocked(val: boolean) {
+    this._blocked = val
+  }
+
   public get invited(): boolean {
     return this._invited
+  }
+
+  public set invited(val: boolean) {
+    this._invited = val
   }
 
   public get displayState(): string {

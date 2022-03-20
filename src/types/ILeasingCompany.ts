@@ -1,5 +1,5 @@
 import { IUser } from './IUser'
 
-export interface ILizingCompany extends IUser {
+export interface ILeasingCompany extends IUser {
   accreditation: boolean
 }

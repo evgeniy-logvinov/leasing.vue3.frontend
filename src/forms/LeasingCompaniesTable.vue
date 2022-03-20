@@ -9,8 +9,8 @@
     ElPopconfirm,
   } from 'element-plus'
   import { useI18n } from 'vue-i18n'
-  import { ILizingCompany } from '~/types'
-  import LizingCompaniesEmployees from './LizingCompaniesEmployees.vue'
+  import { ILeasingCompany } from '~/types'
+  import LeasingCompaniesEmployees from './LeasingCompaniesEmployees.vue'
   // TODO: handle on change to prevent a lot of requests
 
   const emit = defineEmits<{
@@ -23,9 +23,9 @@
   }>()
   const { t } = useI18n()
   const props = defineProps<{
-    lizingCompanies?: ILizingCompany[]
+    leasingCompanies?: ILeasingCompany[]
   }>()
-  const { lizingCompanies } = toRefs(props)
+  const { leasingCompanies } = toRefs(props)
 
   const confirmInviteEvent = (id: string): boolean | Promise<boolean> => {
     emit('invite', id)
@@ -40,16 +40,16 @@
 
 <template>
   <el-table
-    :data="lizingCompanies"
+    :data="leasingCompanies"
     current-row-key="id"
     highlight-current-row
     :default-sort="{ prop: 'userName', order: 'ascending' }"
   >
     <el-table-column type="expand">
       <template #default="{ row }">
-        <lizing-companies-employees
+        <leasing-companies-employees
           :company-id="row.id"
-        ></lizing-companies-employees>
+        ></leasing-companies-employees>
       </template>
     </el-table-column>
     <el-table-column type="index" width="30" />
@@ -77,7 +77,7 @@
           :key="'toInvite' + row.id"
           :confirm-button-text="t('yes')"
           :cancel-button-text="t('no')"
-          :title="t('lizingCompany.question.invite')"
+          :title="t('leasingCompany.question.invite')"
           @confirm="confirmInviteEvent(row.id)"
         >
           <template #reference>
@@ -91,7 +91,7 @@
           key="delete"
           :confirm-button-text="t('yes')"
           :cancel-button-text="t('no')"
-          :title="t('lizingCompany.question.delete')"
+          :title="t('leasingCompany.question.delete')"
           @confirm="confirmDeleteEvent(row.id)"
         >
           <template #reference>

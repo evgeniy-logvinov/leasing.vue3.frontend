@@ -9,7 +9,7 @@
   "accreditation": "",
   "blocked": "",
   "description": "",
-  "lizingCompanies": "",
+  "leasingCompanies": "",
   "monday": "Monday",
   "addClient": "Add client",
   "to": {
@@ -45,7 +45,7 @@
     "send": ""
   },
   "accredetation": "",
-  "lizingCompany": {
+  "leasingCompany": {
     "not": {
       "exists": ""
     },
@@ -123,7 +123,7 @@
     "forTaxi": "",
     "noMore": "",
     "legalEntity": "",
-    "monthesOnTheEndOfLizing": "",
+    "monthesOnTheEndOfLeasing": "",
     "new": "",
     "used": "",
     "returnable": "",

@@ -1,5 +1,5 @@
-import { LizingCompanyEntity, ClientEntity } from '~/entities'
-import { Client, LizingCompany, User, LizingCompanyEmployees } from '~/types'
+import { LeasingCompanyEntity, ClientEntity } from '~/entities'
+import { Client, LeasingCompany, User, LeasingCompanyEmployees } from '~/types'
 
 const clients: Client[] = [
   {
@@ -38,7 +38,7 @@ const newClient: Client = {
   state: 'UNREG',
 }
 
-const lizingCompanies: LizingCompany[] = [
+const leasingCompanies: LeasingCompany[] = [
   {
     id: '1',
     userName: 'Компания 1',
@@ -77,7 +77,7 @@ const lizingCompanies: LizingCompany[] = [
   },
 ]
 
-const lizingCompanyEmployees: LizingCompanyEmployees = {
+const leasingCompanyEmployees: LeasingCompanyEmployees = {
   id: '1',
   analitics: {
     headOfDepartment: 'Логвинов Е.К',
@@ -141,11 +141,11 @@ const lizingCompanyEmployees: LizingCompanyEmployees = {
   },
 }
 
-const newLizingCompany: LizingCompany = {
-  id: `${lizingCompanies.length}`,
-  userName: `Компания ${lizingCompanies.length}`,
-  inn: lizingCompanies.length + 2345675,
-  email: `info${lizingCompanies.length}@example.ru`,
+const newLeasingCompany: LeasingCompany = {
+  id: `${leasingCompanies.length}`,
+  userName: `Компания ${leasingCompanies.length}`,
+  inn: leasingCompanies.length + 2345675,
+  email: `info${leasingCompanies.length}@example.ru`,
   state: 'UNREG',
 }
 
@@ -154,10 +154,10 @@ const refreshClients = () => {
   parsedClients = clients.map((client) => ClientEntity.parse(client))
 }
 
-let parsedLizingCompanies: LizingCompanyEntity[] = []
-const refreshLizingCompanies = () => {
-  parsedLizingCompanies = lizingCompanies.map((lk) =>
-    LizingCompanyEntity.parse(lk)
+let parsedLeasingCompanies: LeasingCompanyEntity[] = []
+const refreshLeasingCompanies = () => {
+  parsedLeasingCompanies = leasingCompanies.map((lk) =>
+    LeasingCompanyEntity.parse(lk)
   )
 }
 
@@ -200,41 +200,41 @@ class UserService {
     return Promise.resolve(id)
   }
 
-  async getLizingCompanies(): Promise<LizingCompanyEntity[]> {
-    console.log('getLizingCompanies')
-    refreshLizingCompanies()
-    return Promise.resolve(parsedLizingCompanies)
+  async getLeasingCompanies(): Promise<LeasingCompanyEntity[]> {
+    console.log('getLeasingCompanies')
+    refreshLeasingCompanies()
+    return Promise.resolve(parsedLeasingCompanies)
   }
 
-  async addLizingCompany(
+  async addLeasingCompany(
     userName: string,
     inn: number,
     email: string
   ): Promise<string> {
     const newUser = ClientEntity.parse({
-      ...newLizingCompany,
+      ...newLeasingCompany,
       userName,
       inn,
       email,
       id: '10',
     })
-    console.log('add lizing company', newUser)
-    lizingCompanies.push(newUser)
+    console.log('add leasing company', newUser)
+    leasingCompanies.push(newUser)
     return Promise.resolve(newUser.id)
   }
 
-  async updateLizingCompany(lizingCompany: LizingCompany): Promise<string> {
-    console.log('update lizling company', lizingCompany)
-    return Promise.resolve(lizingCompany.id)
+  async updateLeasingCompany(leasingCompany: LeasingCompany): Promise<string> {
+    console.log('update lizling company', leasingCompany)
+    return Promise.resolve(leasingCompany.id)
   }
 
-  async inviteLizingCompany(id: string): Promise<string> {
-    console.log('invite lizing company', id)
+  async inviteLeasingCompany(id: string): Promise<string> {
+    console.log('invite leasing company', id)
     return Promise.resolve(id)
   }
 
-  async deleteLizingCompany(id: string): Promise<string> {
-    console.log('delete lizing company', id)
+  async deleteLeasingCompany(id: string): Promise<string> {
+    console.log('delete leasing company', id)
     return Promise.resolve(id)
   }
 
@@ -243,9 +243,11 @@ class UserService {
     return Promise.resolve()
   }
 
-  async getLizingCompanyEmployees(id: string): Promise<LizingCompanyEmployees> {
-    console.log('getLizingCompanyEmployees', id)
-    return Promise.resolve(lizingCompanyEmployees)
+  async getLeasingCompanyEmployees(
+    id: string
+  ): Promise<LeasingCompanyEmployees> {
+    console.log('getLeasingCompanyEmployees', id)
+    return Promise.resolve(leasingCompanyEmployees)
   }
 }
 

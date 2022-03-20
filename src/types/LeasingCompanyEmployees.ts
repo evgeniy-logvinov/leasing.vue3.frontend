@@ -1,7 +1,7 @@
 import { AnaliticsDepartment } from './AnaliticsDepartment'
 import { SalesDepartment } from './SalesDepartment'
 
-export interface ILizingCompanyEmployees {
+export interface LeasingCompanyEmployees {
   id: string
   analitics: AnaliticsDepartment
   sales: SalesDepartment

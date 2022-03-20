@@ -22,7 +22,7 @@
         v-model="data.noMoreMonth"
         :placeholder="t('typeSomething')"
       ></el-input>
-      <span>{{ t('preferenceFilter.monthesOnTheEndOfLizing') }}</span></el-col
+      <span>{{ t('preferenceFilter.monthesOnTheEndOfLeasing') }}</span></el-col
     ></el-row
   >
   <el-row

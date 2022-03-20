@@ -3,12 +3,12 @@
   import { ElRow, ElCol, ElInput, ElTree } from 'element-plus'
   import { userService } from '~/services'
   import { useI18n } from 'vue-i18n'
-  import { ILizingCompanyEmployees } from '~/types'
+  import { ILeasingCompanyEmployees } from '~/types'
   // TODO: debounce for description
   // TODO: Move Node
   const { t } = useI18n()
   const id = ref<string>()
-  const employees = ref<ILizingCompanyEmployees>()
+  const employees = ref<ILeasingCompanyEmployees>()
 
   interface Tree {
     id: string
@@ -43,7 +43,7 @@
     async (newVal) => {
       if (newVal) {
         id.value = newVal
-        employees.value = await userService.getLizingCompanyEmployees(id.value)
+        employees.value = await userService.getLeasingCompanyEmployees(id.value)
         fillDataSource()
       }
       console.log(`value is: ${newVal}`)

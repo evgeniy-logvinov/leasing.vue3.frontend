@@ -9,7 +9,7 @@
   "accreditation": "Аккредитация",
   "blocked": "Блокирован",
   "description": "Примечание",
-  "lizingCompanies": "Лизинговые компании",
+  "leasingCompanies": "Лизинговые компании",
   "monday": "Понедельник",
   "addClient": "Добавить клиента",
   "to": {
@@ -45,7 +45,7 @@
     "send": "Выслать приглашение"
   },
   "accredetation": "Аккредитация",
-  "lizingCompany": {
+  "leasingCompany": {
     "not": {
       "exists": "Компания отсутсвует"
     },
@@ -123,7 +123,7 @@
     "forTaxi": "Для целей такси - ОКВЭД 49.32",
     "noMore": "не более",
     "legalEntity": "Юридическое лицо",
-    "monthesOnTheEndOfLizing": "месяцев на момент окончания договора лизинга",
+    "monthesOnTheEndOfLeasing": "месяцев на момент окончания договора лизинга",
     "new": "Новые",
     "used": "БУ",
     "returnable": "Возвратный",

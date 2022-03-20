@@ -1,11 +1,11 @@
 import {
-  ILizingCompanyEmployees,
+  ILeasingCompanyEmployees,
   AnaliticsDepartment,
   SalesDepartment,
-  LizingCompanyEmployees,
+  LeasingCompanyEmployees,
 } from '~/types'
 
-export class LizingCompanyEmployeesEntity implements ILizingCompanyEmployees {
+export class LeasingCompanyEmployeesEntity implements ILeasingCompanyEmployees {
   constructor(
     private readonly _id: string,
     private readonly _analitics: AnaliticsDepartment,
@@ -24,8 +24,8 @@ export class LizingCompanyEmployeesEntity implements ILizingCompanyEmployees {
     return this._sales
   }
 
-  public static parse(proto: LizingCompanyEmployees) {
-    return new LizingCompanyEmployeesEntity(
+  public static parse(proto: LeasingCompanyEmployees) {
+    return new LeasingCompanyEmployeesEntity(
       proto.id,
       proto.analitics,
       proto.sales

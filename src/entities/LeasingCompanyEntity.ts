@@ -1,7 +1,10 @@
-import { LizingCompany, UserState, ILizingCompany } from '~/types'
+import { LeasingCompany, UserState, ILeasingCompany } from '~/types'
 import { UserEntity } from '~/entities'
 
-export class LizingCompanyEntity extends UserEntity implements ILizingCompany {
+export class LeasingCompanyEntity
+  extends UserEntity
+  implements ILeasingCompany
+{
   constructor(
     _id: string,
     _userName: string,
@@ -33,8 +36,8 @@ export class LizingCompanyEntity extends UserEntity implements ILizingCompany {
     this._accreditation = val
   }
 
-  public static parse(proto: LizingCompany) {
-    return new LizingCompanyEntity(
+  public static parse(proto: LeasingCompany) {
+    return new LeasingCompanyEntity(
       proto.id,
       proto.userName,
       proto.inn,

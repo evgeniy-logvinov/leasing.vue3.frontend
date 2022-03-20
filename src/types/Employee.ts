@@ -1,4 +1,6 @@
 export interface Employee {
   id: string
-  fio: string
+  firstName: string
+  lastName: string
+  patronymic: string
 }

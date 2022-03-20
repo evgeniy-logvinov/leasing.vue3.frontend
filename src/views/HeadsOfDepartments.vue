@@ -7,20 +7,22 @@
 
   const headsOfDepartments = ref<HeadsOfDepartments>({
     analitics: {
+      id: '',
       email: '',
       firstName: '',
       lastName: '',
       mobilePhone: '',
       phone: '',
-      secondName: '',
+      patronymic: '',
     },
     sales: {
+      id: '',
       email: '',
       firstName: '',
       lastName: '',
       mobilePhone: '',
       phone: '',
-      secondName: '',
+      patronymic: '',
     },
   })
   const { t } = useI18n()
@@ -54,10 +56,10 @@
     ></el-row>
     <el-row
       ><el-col>
-        {{ t('secondName') }}
+        {{ t('patronymic') }}
         <el-input
-          v-model="headsOfDepartments.analitics.secondName"
-          :placeholder="t('secondName')"
+          v-model="headsOfDepartments.analitics.patronymic"
+          :placeholder="t('patronymic')"
         ></el-input> </el-col
     ></el-row>
     <el-row
@@ -105,10 +107,10 @@
     ></el-row>
     <el-row
       ><el-col>
-        {{ t('secondName') }}
+        {{ t('patronymic') }}
         <el-input
-          v-model="headsOfDepartments.sales.secondName"
-          :placeholder="t('secondName')"
+          v-model="headsOfDepartments.sales.patronymic"
+          :placeholder="t('patronymic')"
         ></el-input> </el-col
     ></el-row>
     <el-row

@@ -84,11 +84,15 @@ const lizingCompanyEmployees: LizingCompanyEmployees = {
     employees: [
       {
         id: '1',
-        fio: 'Логвинов Евгений Константинович',
+        firstName: 'Логвинов',
+        lastName: 'Евгений',
+        patronymic: 'Константинович',
       },
       {
         id: '2',
-        fio: 'Логвинов Артем Константинович',
+        firstName: 'Логвинов',
+        lastName: 'Евгений',
+        patronymic: 'Константинович',
       },
     ],
   },
@@ -102,11 +106,15 @@ const lizingCompanyEmployees: LizingCompanyEmployees = {
         employees: [
           {
             id: '1',
-            fio: 'Логвинов Евгений Константинович',
+            firstName: 'Логвинов',
+            lastName: 'Евгений',
+            patronymic: 'Константинович',
           },
           {
             id: '2',
-            fio: 'Логвинов Артем Константинович',
+            firstName: 'Логвинов',
+            lastName: 'Евгений',
+            patronymic: 'Константинович',
           },
         ],
       },
@@ -117,11 +125,15 @@ const lizingCompanyEmployees: LizingCompanyEmployees = {
         employees: [
           {
             id: '1',
-            fio: 'Логвинов Евгений Константинович',
+            firstName: 'Логвинов',
+            lastName: 'Евгений',
+            patronymic: 'Константинович',
           },
           {
             id: '2',
-            fio: 'Логвинов Артем Константинович',
+            firstName: 'Логвинов',
+            lastName: 'Евгений',
+            patronymic: 'Константинович',
           },
         ],
       },

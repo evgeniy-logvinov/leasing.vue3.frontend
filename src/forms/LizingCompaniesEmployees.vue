@@ -28,7 +28,7 @@
       region.employees.forEach((employee) =>
         node.children?.push({
           id: employee.id,
-          label: employee.fio,
+          label: employee.firstName + employee.lastName + employee.patronymic,
         })
       )
       return node
@@ -74,7 +74,9 @@
         v-for="employee in employees?.analitics.employees"
         :key="employee.id"
         disabled
-        :model-value="employee.fio"
+        :model-value="
+          employee.firstName + employee.lastName + employee.patronymic
+        "
       ></el-input>
     </el-col>
   </el-row>

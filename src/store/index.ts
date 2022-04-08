@@ -10,6 +10,7 @@ import { state } from './state'
 import { mutations } from './mutations'
 import { actions } from './actions'
 import { getters } from './getters'
+import { auth } from './modules/auth'
 
 // define injection key
 export const key: InjectionKey<Store<RootState>> = Symbol()
@@ -20,6 +21,9 @@ export const store = createStore<RootState>({
   actions,
   getters,
   plugins: [createLogger()],
+  modules: {
+    auth,
+  },
 })
 
 // define your own `useStore` composition function

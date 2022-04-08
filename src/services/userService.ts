@@ -1,4 +1,5 @@
 import { LeasingCompanyEntity, ClientEntity } from '~/entities'
+import instance from '~/http/axios'
 import { Client, LeasingCompany, User, LeasingCompanyEmployees } from '~/types'
 
 const clients: Client[] = [
@@ -163,6 +164,7 @@ const refreshLeasingCompanies = () => {
 
 class UserService {
   async getClients(): Promise<ClientEntity[]> {
+    instance.get('/getAllTodo')
     console.log('getClients')
     refreshClients()
     return Promise.resolve(parsedClients)

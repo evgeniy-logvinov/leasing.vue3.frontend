@@ -178,5 +178,8 @@
   "street": "",
   "building": "",
   "corpus": "",
-  "officeNumber": ""
+  "officeNumber": "",
+  "signIn": "",
+  "signUp": "",
+  "signOut": ""
 }

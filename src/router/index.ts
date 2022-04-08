@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import { authService } from '~/services'
 
 const routes: Array<RouteRecordRaw> = [
   { path: '/', redirect: '/private' },
@@ -99,6 +100,27 @@ const routes: Array<RouteRecordRaw> = [
     ],
   },
   {
+    path: '/public',
+    name: 'public',
+    redirect: { name: 'signIn' },
+    component: () =>
+      import(/* webpackChunkName: "public" */ '../views/Public.vue'),
+    children: [
+      {
+        path: 'signin',
+        name: 'signIn',
+        component: () =>
+          import(/* webpackChunkName: "signIn" */ '../views/SignIn.vue'),
+      },
+      {
+        path: 'signup',
+        name: 'signUp',
+        component: () =>
+          import(/* webpackChunkName: "signUp" */ '../views/SignUp.vue'),
+      },
+    ],
+  },
+  {
     path: '/:pathMatch(.*)*',
     name: 'not-found',
     component: () =>
@@ -111,11 +133,19 @@ const router = createRouter({
   routes,
 })
 
-router.beforeEach((to, from) => {
-  console.log(to, from)
-  // ...
-  // explicitly return false to cancel the navigation
-  return true
+router.beforeEach((to, from, next) => {
+  // redirect to login page if not logged in and trying to access a restricted page
+  const publicPages = ['/public/signin', '/public/signup']
+  const authRequired = !publicPages.includes(to.path)
+  const loggedIn = authService.getUser()
+
+  // trying to access a restricted page + not logged in
+  // redirect to login page
+  if (authRequired && !loggedIn) {
+    return next('/public/signin')
+  }
+
+  next()
 })
 
 export default router

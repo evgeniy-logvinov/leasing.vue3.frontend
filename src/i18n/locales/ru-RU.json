@@ -178,5 +178,8 @@
   "street": "Улица",
   "building": "Дом",
   "corpus": "Корпус",
-  "officeNumber": "Номер офиса"
+  "officeNumber": "Номер офиса",
+  "signIn": "Войти",
+  "signUp": "Зарегистрировать",
+  "signOut": "Выйти"
 }

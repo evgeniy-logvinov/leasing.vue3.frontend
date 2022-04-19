@@ -175,7 +175,7 @@
         <el-select
           v-model="companyProfile.taxationSystem"
           class="m-2"
-          placeholder="Select"
+          :placeholder="t('select')"
           size="large"
         >
           <el-option key="OSN" :label="t('osn')" value="OSN" />

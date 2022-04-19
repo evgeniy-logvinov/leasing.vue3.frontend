@@ -181,5 +181,8 @@
   "officeNumber": "Номер офиса",
   "signIn": "Войти",
   "signUp": "Зарегистрировать",
-  "signOut": "Выйти"
+  "signOut": "Выйти",
+  "select": "Выбрать",
+  "password": "Пароль",
+  "repeatePassword": "Повторить пароль"
 }

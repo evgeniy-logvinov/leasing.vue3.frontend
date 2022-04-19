@@ -11,7 +11,7 @@
   const { t } = useI18n()
   const signInInfo = ref<SignInInfo>({
     password: '',
-    username: '',
+    email: '',
   })
 
   const loggedIn = computed(() => store.getters['auth/loggedIn'])
@@ -45,15 +45,17 @@
 <template>
   <el-row
     ><el-col>
-      <el-input v-model="signInInfo.username" placeholder="Please input"
+      {{ t('email') }}
+      <el-input v-model="signInInfo.email" :placeholder="t('email')"
     /></el-col>
   </el-row>
   <el-row
     ><el-col>
+      {{ t('password') }}
       <el-input
         v-model="signInInfo.password"
         type="password"
-        placeholder="Please input password"
+        :placeholder="t('password')"
         show-password
       /> </el-col
   ></el-row>

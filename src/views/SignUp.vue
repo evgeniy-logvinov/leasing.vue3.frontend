@@ -12,7 +12,7 @@
   const { t } = useI18n()
   const signUpInfo = ref<SignUpInfo>({
     password: '',
-    username: '',
+    repeatPassword: '',
     email: '',
   })
 
@@ -44,15 +44,27 @@
 <template>
   <el-row
     ><el-col>
-      <el-input v-model="signUpInfo.username" placeholder="Please input"
+      {{ t('email') }}
+      <el-input v-model="signUpInfo.email" :placeholder="t('email')"
     /></el-col>
   </el-row>
   <el-row
     ><el-col>
+      {{ t('password') }}
       <el-input
         v-model="signUpInfo.password"
         type="password"
-        placeholder="Please input password"
+        :placeholder="t('password')"
+        show-password
+      /> </el-col
+  ></el-row>
+  <el-row
+    ><el-col>
+      {{ t('repeatePassword') }}
+      <el-input
+        v-model="signUpInfo.repeatPassword"
+        type="password"
+        :placeholder="t('repeatePassword')"
         show-password
       /> </el-col
   ></el-row>

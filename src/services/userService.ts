@@ -1,82 +1,82 @@
 import { LeasingCompanyEntity, ClientEntity } from '~/entities'
-import instance from '~/http/axios'
-import { Client, LeasingCompany, User, LeasingCompanyEmployees } from '~/types'
+import axios from '~/http/axios'
+import { LeasingCompanyEmployees } from '~/types'
 
-const clients: Client[] = [
-  {
-    id: '1',
-    userName: 'Клиент 1',
-    inn: 12345678,
-    email: 'info1@example.ru',
-    state: 'UNREG',
-  },
-  {
-    id: '2',
-    userName: 'Клиент 2',
-    inn: 12345677,
-    email: 'info2@example.ru',
-    state: 'UNREG',
-    invited: true,
-    blocked: true,
-    description: 'Test description',
-  },
-  {
-    id: '3',
-    userName: 'Клиент 3',
-    inn: 12345676,
-    email: 'info3@example.ru',
-    state: 'REG',
-    invited: true,
-    blocked: true,
-  },
-]
+// const clients: Client[] = [
+//   {
+//     id: '1',
+//     userName: 'Клиент 1',
+//     inn: 12345678,
+//     email: 'info1@example.ru',
+//     state: 'UNREG',
+//   },
+//   {
+//     id: '2',
+//     userName: 'Клиент 2',
+//     inn: 12345677,
+//     email: 'info2@example.ru',
+//     state: 'UNREG',
+//     invited: true,
+//     blocked: true,
+//     description: 'Test description',
+//   },
+//   {
+//     id: '3',
+//     userName: 'Клиент 3',
+//     inn: 12345676,
+//     email: 'info3@example.ru',
+//     state: 'REG',
+//     invited: true,
+//     blocked: true,
+//   },
+// ]
 
-const newClient: Client = {
-  id: `${clients.length}`,
-  userName: `Клиент ${clients.length}`,
-  inn: clients.length + 2345675,
-  email: `info${clients.length}@example.ru`,
-  state: 'UNREG',
-}
+// const newClient: Client = {
+//   id: `${clients.length}`,
+//   userName: `Клиент ${clients.length}`,
+//   inn: clients.length + 2345675,
+//   email: `info${clients.length}@example.ru`,
+//   state: 'UNREG',
+// }
 
-const leasingCompanies: LeasingCompany[] = [
-  {
-    id: '1',
-    userName: 'Компания 1',
-    inn: 12345678,
-    email: 'info1@example.ru',
-    state: 'UNREG',
-  },
-  {
-    id: '2',
-    userName: 'Компания 2',
-    inn: 12345677,
-    email: 'info2@example.ru',
-    state: 'UNREG',
-    invited: true,
-    blocked: true,
-    description: 'Test description',
-  },
-  {
-    id: '3',
-    userName: 'Компания 3',
-    inn: 12345676,
-    email: 'info3@example.ru',
-    state: 'REG',
-    invited: true,
-    blocked: true,
-  },
-  {
-    id: '4',
-    userName: 'Компания 4',
-    inn: 12345672,
-    email: 'info3@example.ru',
-    state: 'REG',
-    invited: true,
-    blocked: true,
-    accreditation: true,
-  },
-]
+// const leasingCompanies: LeasingCompany[] = [
+//   {
+//     id: '1',
+//     userName: 'Компания 1',
+//     inn: 12345678,
+//     email: 'info1@example.ru',
+//     state: 'UNREG',
+//   },
+//   {
+//     id: '2',
+//     userName: 'Компания 2',
+//     inn: 12345677,
+//     email: 'info2@example.ru',
+//     state: 'UNREG',
+//     invited: true,
+//     blocked: true,
+//     description: 'Test description',
+//   },
+//   {
+//     id: '3',
+//     userName: 'Компания 3',
+//     inn: 12345676,
+//     email: 'info3@example.ru',
+//     state: 'REG',
+//     invited: true,
+//     blocked: true,
+//   },
+//   {
+//     id: '4',
+//     userName: 'Компания 4',
+//     inn: 12345672,
+//     email: 'info3@example.ru',
+//     state: 'REG',
+//     invited: true,
+//     blocked: true,
+//     accreditation: true,
+//   },
+// ]
 
 const leasingCompanyEmployees: LeasingCompanyEmployees = {
   id: '1',
@@ -142,59 +142,52 @@ const leasingCompanyEmployees: LeasingCompanyEmployees = {
   },
 }
 
-const newLeasingCompany: LeasingCompany = {
-  id: `${leasingCompanies.length}`,
-  userName: `Компания ${leasingCompanies.length}`,
-  inn: leasingCompanies.length + 2345675,
-  email: `info${leasingCompanies.length}@example.ru`,
-  state: 'UNREG',
-}
+// const newLeasingCompany: LeasingCompany = {
+//   id: `${leasingCompanies.length}`,
+//   userName: `Компания ${leasingCompanies.length}`,
+//   inn: leasingCompanies.length + 2345675,
+//   email: `info${leasingCompanies.length}@example.ru`,
+//   state: 'UNREG',
+// }
 
-let parsedClients: ClientEntity[] = []
-const refreshClients = () => {
-  parsedClients = clients.map((client) => ClientEntity.parse(client))
-}
-
-let parsedLeasingCompanies: LeasingCompanyEntity[] = []
-const refreshLeasingCompanies = () => {
-  parsedLeasingCompanies = leasingCompanies.map((lk) =>
-    LeasingCompanyEntity.parse(lk)
-  )
-}
+// let parsedLeasingCompanies: LeasingCompanyEntity[] = []
+// const refreshLeasingCompanies = () => {
+//   parsedLeasingCompanies = leasingCompanies.map((lk) =>
+//     LeasingCompanyEntity.parse(lk)
+//   )
+// }
 
 class UserService {
   async getClients(): Promise<ClientEntity[]> {
-    instance.get('/getAllTodo')
-    console.log('getClients')
-    refreshClients()
-    return Promise.resolve(parsedClients)
+    const { data: clients }: { data: ClientEntity[] } = await axios.get(
+      '/client'
+    )
+    return Promise.resolve(clients.map((el) => ClientEntity.parse(el)))
   }
 
   async addClient(
     userName: string,
     inn: number,
     email: string
-  ): Promise<string> {
-    const newUser = ClientEntity.parse({
-      ...newClient,
-      userName,
-      inn,
-      email,
-      id: '10',
-    })
-    console.log('addclient', newUser)
-    clients.push(newUser)
-    return Promise.resolve(newUser.id)
+  ): Promise<ClientEntity> {
+    const { data: client }: { data: ClientEntity } = await axios.post(
+      '/client',
+      {
+        userName,
+        inn: Number(inn),
+        email,
+      }
+    )
+    return Promise.resolve(ClientEntity.parse(client))
   }
 
-  async updateClient(client: User): Promise<string> {
-    console.log('update client', client)
-    return Promise.resolve(client.id)
-  }
+  async updateClient(client: ClientEntity): Promise<ClientEntity> {
+    const { data: res }: { data: ClientEntity } = await axios.patch(
+      '/client',
+      client.unparse()
+    )
 
-  async inviteClient(id: string): Promise<string> {
-    console.log('invite client', id)
-    return Promise.resolve(id)
+    return Promise.resolve(ClientEntity.parse(res))
   }
 
   async deleteClient(id: string): Promise<string> {
@@ -203,36 +196,38 @@ class UserService {
   }
 
   async getLeasingCompanies(): Promise<LeasingCompanyEntity[]> {
-    console.log('getLeasingCompanies')
-    refreshLeasingCompanies()
-    return Promise.resolve(parsedLeasingCompanies)
+    const { data: leasingCompanies }: { data: ClientEntity[] } =
+      await axios.get('/leasing-company')
+    return Promise.resolve(
+      leasingCompanies.map((el) => LeasingCompanyEntity.parse(el))
+    )
   }
 
   async addLeasingCompany(
     userName: string,
     inn: number,
     email: string
-  ): Promise<string> {
-    const newUser = ClientEntity.parse({
-      ...newLeasingCompany,
-      userName,
-      inn,
-      email,
-      id: '10',
-    })
-    console.log('add leasing company', newUser)
-    leasingCompanies.push(newUser)
-    return Promise.resolve(newUser.id)
+  ): Promise<LeasingCompanyEntity> {
+    const { data: leasingCompany }: { data: ClientEntity } = await axios.post(
+      '/leasing-company',
+      {
+        userName,
+        inn: Number(inn),
+        email,
+      }
+    )
+    return Promise.resolve(LeasingCompanyEntity.parse(leasingCompany))
   }
 
-  async updateLeasingCompany(leasingCompany: LeasingCompany): Promise<string> {
-    console.log('update lizling company', leasingCompany)
-    return Promise.resolve(leasingCompany.id)
-  }
+  async updateLeasingCompany(
+    leasingCompany: LeasingCompanyEntity
+  ): Promise<LeasingCompanyEntity> {
+    const { data: res }: { data: LeasingCompanyEntity } = await axios.patch(
+      '/leasing-company',
+      leasingCompany.unparse()
+    )
 
-  async inviteLeasingCompany(id: string): Promise<string> {
-    console.log('invite leasing company', id)
-    return Promise.resolve(id)
+    return Promise.resolve(LeasingCompanyEntity.parse(res))
   }
 
   async deleteLeasingCompany(id: string): Promise<string> {

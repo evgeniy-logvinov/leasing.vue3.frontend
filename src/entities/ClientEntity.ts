@@ -36,4 +36,17 @@ export class ClientEntity extends UserEntity {
       proto.description
     )
   }
+
+  public unparse(): Client {
+    return {
+      id: this.id,
+      userName: this.userName,
+      inn: this.inn,
+      email: this.email,
+      state: this.state,
+      blocked: this.blocked,
+      invited: this.invited,
+      description: this.description,
+    }
+  }
 }

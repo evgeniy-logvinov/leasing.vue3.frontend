@@ -9,8 +9,8 @@
     ElPopconfirm,
   } from 'element-plus'
   import { useI18n } from 'vue-i18n'
-  import { ILeasingCompany } from '~/types'
   import LeasingCompaniesEmployees from './LeasingCompaniesEmployees.vue'
+  import { LeasingCompanyEntity } from '~/entities'
   // TODO: handle on change to prevent a lot of requests
 
   const emit = defineEmits<{
@@ -23,7 +23,7 @@
   }>()
   const { t } = useI18n()
   const props = defineProps<{
-    leasingCompanies?: ILeasingCompany[]
+    leasingCompanies?: LeasingCompanyEntity[]
   }>()
   const { leasingCompanies } = toRefs(props)
 

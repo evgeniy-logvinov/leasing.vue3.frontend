@@ -49,4 +49,18 @@ export class LeasingCompanyEntity
       proto.description
     )
   }
+
+  public unparse(): LeasingCompany {
+    return {
+      id: this.id,
+      userName: this.userName,
+      inn: this.inn,
+      email: this.email,
+      state: this.state,
+      blocked: this.blocked,
+      invited: this.invited,
+      description: this.description,
+      accreditation: this.accreditation,
+    }
+  }
 }

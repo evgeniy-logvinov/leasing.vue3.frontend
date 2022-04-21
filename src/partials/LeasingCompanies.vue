@@ -3,12 +3,13 @@
   import { ElRow, ElCol, ElButton } from 'element-plus'
   import { userService } from '~/services'
   import { useI18n } from 'vue-i18n'
-  import { ILeasingCompany, NewUser } from '~/types'
+  import { NewUser } from '~/types'
   import AddUser from '~/forms/AddUser.vue'
   import LeasingCompaniesTable from '~/forms/LeasingCompaniesTable.vue'
+  import { LeasingCompanyEntity } from '~/entities'
   // TODO: debounce for description
 
-  const leasingCompanies = ref<ILeasingCompany[]>([])
+  const leasingCompanies = ref<LeasingCompanyEntity[]>([])
   const dialogAddVisible = ref<boolean>(false)
   const { t } = useI18n()
 
@@ -20,7 +21,7 @@
     } else {
       throw Error(t('leasingCompany.not.exists'))
     }
-    await userService.inviteLeasingCompany(id)
+    await userService.updateLeasingCompany(leasingCompany)
   }
 
   const handleDelete = async (id: string) => {
@@ -58,7 +59,7 @@
 
     if (leasingCompany) {
       leasingCompany.description = description
-      await userService.updateClient(leasingCompany)
+      await userService.updateLeasingCompany(leasingCompany)
     } else {
       throw Error(t('leasingCompany.exists'))
     }
@@ -72,7 +73,7 @@
     if (email && inn && userName) {
       await userService.addLeasingCompany(userName, inn, email)
       dialogAddVisible.value = false
-      getLeasingCompanies()
+      await getLeasingCompanies()
     }
   }
 
@@ -81,7 +82,7 @@
     leasingCompanies.value = await userService.getLeasingCompanies()
   }
 
-  onMounted(async () => getLeasingCompanies())
+  onMounted(async () => await getLeasingCompanies())
 </script>
 
 <template>

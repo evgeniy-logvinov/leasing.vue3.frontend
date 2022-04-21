@@ -9,7 +9,7 @@
     ElPopconfirm,
   } from 'element-plus'
   import { useI18n } from 'vue-i18n'
-  import { IUser } from '~/types'
+  import { ClientEntity } from '~/entities'
   // TODO: handle on change to prevent a lot of requests
 
   const emit = defineEmits<{
@@ -20,7 +20,7 @@
   }>()
   const { t } = useI18n()
   const props = defineProps<{
-    clients?: IUser[]
+    clients: ClientEntity[]
   }>()
   const { clients } = toRefs(props)
 
@@ -59,7 +59,7 @@
           @confirm="confirmInviteEvent(row.id)"
         >
           <template #reference>
-            <el-button size="small" :disabled="!row.invited">{{
+            <el-button size="small" :disabled="row.invited">{{
               t('to.invite')
             }}</el-button>
           </template>

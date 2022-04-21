@@ -4,11 +4,12 @@
   import { userService } from '~/services'
   import { useI18n } from 'vue-i18n'
   import ClientsTable from '~/forms/ClientsTable.vue'
-  import { IUser, NewUser } from '~/types'
+  import { NewUser } from '~/types'
   import AddUser from '~/forms/AddUser.vue'
+  import { ClientEntity } from '~/entities'
   // TODO: debounce for description
 
-  const clients = ref<IUser[]>([])
+  const clients = ref<ClientEntity[]>([])
   const dialogAddVisible = ref<boolean>(false)
   const { t } = useI18n()
 
@@ -20,7 +21,7 @@
     } else {
       throw Error(t('client.not.exists'))
     }
-    await userService.inviteClient(id)
+    await userService.updateClient(client)
   }
 
   const handleDelete = async (id: string) => {
@@ -66,7 +67,7 @@
     clients.value = await userService.getClients()
   }
 
-  onMounted(async () => getClients())
+  onMounted(async () => await getClients())
 </script>
 
 <template>

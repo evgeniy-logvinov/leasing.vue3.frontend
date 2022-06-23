@@ -79,11 +79,11 @@
   "manager": "",
   "back": "",
   "loading": "",
-  "analitics": {
+  "analiticsDepartment": {
     "headOfDepartment": "",
     "employees": ""
   },
-  "sales": {
+  "salesDepartment": {
     "headOfDepartment": "",
     "regions": {
       "managers": ""
@@ -184,5 +184,6 @@
   "signOut": "",
   "select": "",
   "password": "",
-  "repeatePassword": ""
+  "repeatePassword": "",
+  "resetPassword": ""
 }

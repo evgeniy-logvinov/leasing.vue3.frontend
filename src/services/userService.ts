@@ -80,7 +80,7 @@ import { LeasingCompanyEmployees } from '~/types'
 
 const leasingCompanyEmployees: LeasingCompanyEmployees = {
   id: '1',
-  analitics: {
+  analiticsDepartment: {
     headOfDepartment: 'Логвинов Е.К',
     employees: [
       {
@@ -97,7 +97,7 @@ const leasingCompanyEmployees: LeasingCompanyEmployees = {
       },
     ],
   },
-  sales: {
+  salesDepartment: {
     headOfDepartment: 'Логвинов Е.К',
     regions: [
       {
@@ -243,8 +243,9 @@ class UserService {
   async getLeasingCompanyEmployees(
     id: string
   ): Promise<LeasingCompanyEmployees> {
-    console.log('getLeasingCompanyEmployees', id)
-    return Promise.resolve(leasingCompanyEmployees)
+    const { data: leasingCompanyEmployees }: { data: LeasingCompanyEmployees } =
+      await axios.get(`/leasing-company-employees/${id}`)
+    return leasingCompanyEmployees
   }
 }
 

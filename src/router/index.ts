@@ -118,6 +118,14 @@ const routes: Array<RouteRecordRaw> = [
         component: () =>
           import(/* webpackChunkName: "signUp" */ '../views/SignUp.vue'),
       },
+      {
+        path: 'reset-password/:id',
+        name: 'resetPassword',
+        component: () =>
+          import(
+            /* webpackChunkName: "resetPassword" */ '../views/ResetPassword.vue'
+          ),
+      },
     ],
   },
   {
@@ -135,8 +143,12 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   // redirect to login page if not logged in and trying to access a restricted page
-  const publicPages = ['/public/signin', '/public/signup']
-  const authRequired = !publicPages.includes(to.path)
+  const publicPages = [
+    '/public/signin',
+    '/public/signup',
+    '/public/reset-password',
+  ]
+  const authRequired = !publicPages.some((path) => to.path.includes(path))
   const loggedIn = authService.getUser()
 
   // trying to access a restricted page + not logged in

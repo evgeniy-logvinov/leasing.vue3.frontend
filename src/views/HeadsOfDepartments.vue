@@ -6,7 +6,7 @@
   import { Check } from '@element-plus/icons-vue'
 
   const headsOfDepartments = ref<HeadsOfDepartments>({
-    analitics: {
+    analiticsDepartment: {
       id: '',
       email: '',
       firstName: '',
@@ -15,7 +15,7 @@
       phone: '',
       patronymic: '',
     },
-    sales: {
+    salesDepartment: {
       id: '',
       email: '',
       firstName: '',
@@ -36,13 +36,15 @@
   <template v-if="!headsOfDepartments">{{ t('loading') }}</template>
   <template v-else>
     <el-row
-      ><el-col> {{ t('analitics.headOfDepartment') }} </el-col></el-row
+      ><el-col>
+        {{ t('analiticsDepartment.headOfDepartment') }}
+      </el-col></el-row
     >
     <el-row
       ><el-col>
         {{ t('firstName') }}
         <el-input
-          v-model="headsOfDepartments.analitics.firstName"
+          v-model="headsOfDepartments.analiticsDepartment.firstName"
           :placeholder="t('firstName')"
         ></el-input> </el-col
     ></el-row>
@@ -50,7 +52,7 @@
       ><el-col>
         {{ t('lastName') }}
         <el-input
-          v-model="headsOfDepartments.analitics.lastName"
+          v-model="headsOfDepartments.analiticsDepartment.lastName"
           :placeholder="t('lastName')"
         ></el-input> </el-col
     ></el-row>
@@ -58,7 +60,7 @@
       ><el-col>
         {{ t('patronymic') }}
         <el-input
-          v-model="headsOfDepartments.analitics.patronymic"
+          v-model="headsOfDepartments.analiticsDepartment.patronymic"
           :placeholder="t('patronymic')"
         ></el-input> </el-col
     ></el-row>
@@ -66,7 +68,7 @@
       ><el-col>
         {{ t('email') }}
         <el-input
-          v-model="headsOfDepartments.analitics.email"
+          v-model="headsOfDepartments.analiticsDepartment.email"
           :placeholder="t('email')"
         ></el-input> </el-col
     ></el-row>
@@ -74,7 +76,7 @@
       ><el-col>
         {{ t('phone') }}
         <el-input
-          v-model="headsOfDepartments.analitics.phone"
+          v-model="headsOfDepartments.analiticsDepartment.phone"
           :placeholder="t('phone')"
         ></el-input> </el-col
     ></el-row>
@@ -82,18 +84,18 @@
       ><el-col>
         {{ t('mobilePhone') }}
         <el-input
-          v-model="headsOfDepartments.analitics.mobilePhone"
+          v-model="headsOfDepartments.analiticsDepartment.mobilePhone"
           :placeholder="t('mobilePhone')"
         ></el-input> </el-col
     ></el-row>
     <el-row
-      ><el-col> {{ t('sales.headOfDepartment') }} </el-col></el-row
+      ><el-col> {{ t('salesDepartment.headOfDepartment') }} </el-col></el-row
     >
     <el-row
       ><el-col>
         {{ t('firstName') }}
         <el-input
-          v-model="headsOfDepartments.sales.firstName"
+          v-model="headsOfDepartments.salesDepartment.firstName"
           :placeholder="t('firstName')"
         ></el-input> </el-col
     ></el-row>
@@ -101,7 +103,7 @@
       ><el-col>
         {{ t('lastName') }}
         <el-input
-          v-model="headsOfDepartments.sales.lastName"
+          v-model="headsOfDepartments.salesDepartment.lastName"
           :placeholder="t('lastName')"
         ></el-input> </el-col
     ></el-row>
@@ -109,7 +111,7 @@
       ><el-col>
         {{ t('patronymic') }}
         <el-input
-          v-model="headsOfDepartments.sales.patronymic"
+          v-model="headsOfDepartments.salesDepartment.patronymic"
           :placeholder="t('patronymic')"
         ></el-input> </el-col
     ></el-row>
@@ -117,7 +119,7 @@
       ><el-col>
         {{ t('email') }}
         <el-input
-          v-model="headsOfDepartments.sales.email"
+          v-model="headsOfDepartments.salesDepartment.email"
           :placeholder="t('email')"
         ></el-input> </el-col
     ></el-row>
@@ -125,7 +127,7 @@
       ><el-col>
         {{ t('phone') }}
         <el-input
-          v-model="headsOfDepartments.sales.phone"
+          v-model="headsOfDepartments.salesDepartment.phone"
           :placeholder="t('phone')"
         ></el-input> </el-col
     ></el-row>
@@ -133,7 +135,7 @@
       ><el-col>
         {{ t('mobilePhone') }}
         <el-input
-          v-model="headsOfDepartments.sales.mobilePhone"
+          v-model="headsOfDepartments.salesDepartment.mobilePhone"
           :placeholder="t('mobilePhone')"
         ></el-input> </el-col
     ></el-row>

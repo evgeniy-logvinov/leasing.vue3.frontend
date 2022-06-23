@@ -3,12 +3,12 @@
   import { ElRow, ElCol, ElInput, ElTree } from 'element-plus'
   import { userService } from '~/services'
   import { useI18n } from 'vue-i18n'
-  import { ILeasingCompanyEmployees } from '~/types'
+  import { LeasingCompanyEmployees } from '~/types'
   // TODO: debounce for description
   // TODO: Move Node
   const { t } = useI18n()
   const id = ref<string>()
-  const employees = ref<ILeasingCompanyEmployees>()
+  const employees = ref<LeasingCompanyEmployees>()
 
   interface Tree {
     id: string
@@ -17,22 +17,24 @@
   }
 
   const fillDataSource = () => {
-    console.log(employees.value?.sales.regions.length)
-    dataSource.value = employees.value?.sales.regions.map((region) => {
-      console.log('region', region)
-      const node: Tree = {
-        id: region.id,
-        label: `${region.name} (${region.headOfDepartment})`,
-        children: [],
+    console.log('employees', employees.value?.salesDepartment.regions.length)
+    dataSource.value = employees.value?.salesDepartment.regions.map(
+      (region) => {
+        console.log('region', region)
+        const node: Tree = {
+          id: region.id,
+          label: `${region.name} (${region.headOfDepartment})`,
+          children: [],
+        }
+        region.employees.forEach((employee) =>
+          node.children?.push({
+            id: employee.id,
+            label: employee.firstName + employee.lastName + employee.patronymic,
+          })
+        )
+        return node
       }
-      region.employees.forEach((employee) =>
-        node.children?.push({
-          id: employee.id,
-          label: employee.firstName + employee.lastName + employee.patronymic,
-        })
-      )
-      return node
-    })
+    )
   }
   const dataSource = ref<Tree[]>()
   const props = defineProps<{
@@ -60,18 +62,18 @@
   </el-row>
   <el-row>
     <el-col>
-      {{ t('analitics.headOfDepartment') }}
+      {{ t('analiticsDepartment.headOfDepartment') }}
       <el-input
         disabled
-        :model-value="employees?.analitics.headOfDepartment"
+        :model-value="employees?.analiticsDepartment.headOfDepartment"
       ></el-input>
     </el-col>
   </el-row>
   <el-row>
     <el-col>
-      {{ t('analitics.employees') }}
+      {{ t('analiticsDepartment.employees') }}
       <el-input
-        v-for="employee in employees?.analitics.employees"
+        v-for="employee in employees?.analiticsDepartment.employees"
         :key="employee.id"
         disabled
         :model-value="
@@ -82,10 +84,10 @@
   </el-row>
   <el-row>
     <el-col>
-      {{ t('sales.headOfDepartment') }}
+      {{ t('salesDepartment.headOfDepartment') }}
       <el-input
         disabled
-        :model-value="employees?.sales.headOfDepartment"
+        :model-value="employees?.salesDepartment.headOfDepartment"
       ></el-input>
     </el-col>
   </el-row>
@@ -107,8 +109,8 @@
   </el-row>
   <!-- <el-row>
     <el-col>
-      {{ t('sales.regions.managers') }}
-      <div v-for="region in employees?.sales.regions" :key="region.id">
+      {{ t('salesDepartment.regions.managers') }}
+      <div v-for="region in employees?.salesDepartment.regions" :key="region.id">
         {{ region.name }} ({{ region.headOfDepartment }})
         <div v-for="employee in region.employees" :key="employee.id">
           {{ employee.fio }}

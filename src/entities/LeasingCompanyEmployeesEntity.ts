@@ -8,27 +8,27 @@ import {
 export class LeasingCompanyEmployeesEntity implements ILeasingCompanyEmployees {
   constructor(
     private readonly _id: string,
-    private readonly _analitics: AnaliticsDepartment,
-    private readonly _sales: SalesDepartment
+    private readonly _analiticsDepartment: AnaliticsDepartment,
+    private readonly _salesDepartment: SalesDepartment
   ) {}
 
   public get id(): string {
     return this._id
   }
 
-  public get analitics(): AnaliticsDepartment {
-    return this._analitics
+  public get analiticsDepartment(): AnaliticsDepartment {
+    return this._analiticsDepartment
   }
 
-  public get sales(): SalesDepartment {
-    return this._sales
+  public get salesDepartment(): SalesDepartment {
+    return this._salesDepartment
   }
 
   public static parse(proto: LeasingCompanyEmployees) {
     return new LeasingCompanyEmployeesEntity(
       proto.id,
-      proto.analitics,
-      proto.sales
+      proto.analiticsDepartment,
+      proto.salesDepartment
     )
   }
 }

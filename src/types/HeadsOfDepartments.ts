@@ -1,6 +1,6 @@
 import { EmployeeFull } from './EmployeeFull'
 
 export interface HeadsOfDepartments {
-  analitics: EmployeeFull
-  sales: EmployeeFull
+  analiticsDepartment: EmployeeFull
+  salesDepartment: EmployeeFull
 }

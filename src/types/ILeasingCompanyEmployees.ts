@@ -1,8 +1,9 @@
 import { AnaliticsDepartment } from './AnaliticsDepartment'
 import { SalesDepartment } from './SalesDepartment'
 
+// @deprecate
 export interface ILeasingCompanyEmployees {
   id: string
-  analitics: AnaliticsDepartment
-  sales: SalesDepartment
+  analiticsDepartment: AnaliticsDepartment
+  salesDepartment: SalesDepartment
 }

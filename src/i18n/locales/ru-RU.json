@@ -79,11 +79,11 @@
   "manager": "Менеджер",
   "back": "Назад",
   "loading": "Загрузка",
-  "analitics": {
+  "analiticsDepartment": {
     "headOfDepartment": "Начальник отдела Аналитики",
     "employees": "Отдел Аналитики"
   },
-  "sales": {
+  "salesDepartment": {
     "headOfDepartment": "Начальник отдела продаж",
     "regions": {
       "managers": "Региональные менеджеры"
@@ -184,5 +184,6 @@
   "signOut": "Выйти",
   "select": "Выбрать",
   "password": "Пароль",
-  "repeatePassword": "Повторить пароль"
+  "repeatePassword": "Повторить пароль",
+  "resetPassword": "Сбросить пароль"
 }

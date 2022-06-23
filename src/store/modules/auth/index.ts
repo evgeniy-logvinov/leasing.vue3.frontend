@@ -1,7 +1,7 @@
 import { ActionTree, GetterTree, Module, MutationTree } from 'vuex'
 import { authService } from '~/services'
 import { RootState } from '~/store/types'
-import { AuthUserInfo, SignInInfo } from '~/types'
+import { AuthUserInfo, Permissions, SignInInfo } from '~/types'
 
 const user = authService.getUser()
 
@@ -19,9 +19,9 @@ export interface AuthState {
 }
 
 export const actions: ActionTree<AuthState, RootState> = {
-  signIn({ commit }, user: SignInInfo) {
+  async signIn({ commit }, user: SignInInfo) {
     try {
-      const res = authService.signIn(user)
+      const res = await authService.signIn(user)
       commit('signInSuccess', res)
       return Promise.resolve(res)
     } catch (err) {
@@ -33,9 +33,9 @@ export const actions: ActionTree<AuthState, RootState> = {
     authService.signOut()
     commit('signOut')
   },
-  signUp({ commit }, user) {
+  async signUp({ commit }, user) {
     try {
-      const res = authService.signUp(user)
+      const res = await authService.signUp(user)
       commit('signUpSuccess')
       return Promise.resolve(res)
     } catch (err) {
@@ -69,6 +69,9 @@ export const mutations: MutationTree<AuthState> = {
 export const getters: GetterTree<AuthState, RootState> = {
   loggedIn: (state: AuthState): boolean => {
     return state.status.loggedIn
+  },
+  permissions: (state: AuthState): Permissions[] | undefined => {
+    return state.user?.permissions
   },
 }
 

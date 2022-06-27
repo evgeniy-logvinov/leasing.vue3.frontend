@@ -185,5 +185,16 @@
   "select": "",
   "password": "",
   "repeatePassword": "",
-  "resetPassword": ""
+  "resetPassword": "",
+  "confirmEmail": {
+    "label": "",
+    "button": "",
+    "approved": ""
+  },
+  "resetRequired": {
+    "label": "",
+    "button": "",
+    "send": "",
+    "question": ""
+  }
 }

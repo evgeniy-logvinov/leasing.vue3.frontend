@@ -5,6 +5,7 @@
   import { useI18n } from 'vue-i18n'
   import { ResetPassword } from '~/types'
   import { authService } from '~/services'
+  import { store } from '~/store'
 
   const { t } = useI18n()
   const router = useRouter()
@@ -18,10 +19,14 @@
   resetPassword.value.id = route.params.id as string
 
   const reset = async () => {
-    await authService.resetPassword(resetPassword.value)
-    router.push({
-      name: 'signIn',
-    })
+    try {
+      await store.dispatch('auth/resetPassword', resetPassword.value)
+      router.push({
+        name: 'signIn',
+      })
+    } catch (err) {
+      console.log('error')
+    }
   }
 
   const goToSignIn = async () => {

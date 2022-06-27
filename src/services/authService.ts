@@ -1,5 +1,12 @@
 import axios from '~/http/axios'
-import { AuthUserInfo, ResetPassword, SignInInfo, SignUpInfo } from '~/types'
+import {
+  AuthUserInfo,
+  ConfirmEmail,
+  ResetPassword,
+  ResetRequired,
+  SignInInfo,
+  SignUpInfo,
+} from '~/types'
 
 class AuthService {
   async signIn(signInInfo: SignInInfo): Promise<AuthUserInfo> {
@@ -19,8 +26,16 @@ class AuthService {
     return await axios.post('/auth/signup', signUpInfo)
   }
 
+  async resetRequired(resetRequired: ResetRequired): Promise<void> {
+    return await axios.post('/auth/reset-required', resetRequired)
+  }
+
   async resetPassword(resetPassword: ResetPassword): Promise<void> {
     return await axios.post('/auth/reset-password', resetPassword)
+  }
+
+  async confirmEmail(confirmEmail: ConfirmEmail): Promise<void> {
+    return await axios.post('/auth/confirm-email', confirmEmail)
   }
 
   signOut(): void {

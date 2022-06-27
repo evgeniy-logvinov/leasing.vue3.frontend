@@ -1,7 +1,14 @@
 import { ActionTree, GetterTree, Module, MutationTree } from 'vuex'
 import { authService } from '~/services'
 import { RootState } from '~/store/types'
-import { AuthUserInfo, Permissions, SignInInfo } from '~/types'
+import {
+  AuthUserInfo,
+  ConfirmEmail,
+  Permissions,
+  ResetPassword,
+  ResetRequired,
+  SignInInfo,
+} from '~/types'
 
 const user = authService.getUser()
 
@@ -26,6 +33,30 @@ export const actions: ActionTree<AuthState, RootState> = {
       return Promise.resolve(res)
     } catch (err) {
       commit('signInFailure')
+      return Promise.reject(err)
+    }
+  },
+  async confirmEmail({ commit }, confirmEmail: ConfirmEmail) {
+    try {
+      const res = await authService.confirmEmail(confirmEmail)
+      return Promise.resolve(res)
+    } catch (err) {
+      return Promise.reject(err)
+    }
+  },
+  async resetRequired({ commit }, resetPequired: ResetRequired) {
+    try {
+      const res = await authService.resetRequired(resetPequired)
+      return Promise.resolve(res)
+    } catch (err) {
+      return Promise.reject(err)
+    }
+  },
+  async resetPassword({ commit }, resetPassword: ResetPassword) {
+    try {
+      const res = await authService.resetPassword(resetPassword)
+      return Promise.resolve(res)
+    } catch (err) {
       return Promise.reject(err)
     }
   },

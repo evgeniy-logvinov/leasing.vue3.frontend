@@ -119,11 +119,27 @@ const routes: Array<RouteRecordRaw> = [
           import(/* webpackChunkName: "signUp" */ '../views/SignUp.vue'),
       },
       {
+        path: 'reset-required',
+        name: 'resetPequired',
+        component: () =>
+          import(
+            /* webpackChunkName: "resetPequired" */ '../views/ResetRequired.vue'
+          ),
+      },
+      {
         path: 'reset-password/:id',
         name: 'resetPassword',
         component: () =>
           import(
             /* webpackChunkName: "resetPassword" */ '../views/ResetPassword.vue'
+          ),
+      },
+      {
+        path: 'confirm-email/:id',
+        name: 'confirmEmail',
+        component: () =>
+          import(
+            /* webpackChunkName: "confirmEmail" */ '../views/ConfirmEmail.vue'
           ),
       },
     ],
@@ -146,7 +162,9 @@ router.beforeEach((to, from, next) => {
   const publicPages = [
     '/public/signin',
     '/public/signup',
+    '/public/reset-required',
     '/public/reset-password',
+    '/public/confirm-email',
   ]
   const authRequired = !publicPages.some((path) => to.path.includes(path))
   const loggedIn = authService.getUser()

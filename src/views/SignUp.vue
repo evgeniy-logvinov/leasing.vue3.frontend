@@ -39,6 +39,12 @@
       name: 'signIn',
     })
   }
+
+  const goToResetRequired = async () => {
+    router.push({
+      name: 'resetPequired',
+    })
+  }
 </script>
 
 <template>
@@ -77,6 +83,13 @@
     ><el-col>
       <el-button type="primary" @click="goToSignIn">
         {{ t('signIn') }}</el-button
+      >
+    </el-col></el-row
+  >
+  <el-row
+    ><el-col>
+      <el-button type="text" @click="goToResetRequired">
+        {{ t('resetRequired.question') }}</el-button
       >
     </el-col></el-row
   >

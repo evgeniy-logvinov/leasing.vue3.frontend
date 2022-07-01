@@ -9,7 +9,7 @@ export interface CompanyProfile {
   generalAccountant: Employee
   legalAddress: Address
   postAddress: Address
-  inn: number
+  inn: string
   ogrn: number
   okpo: number
   kpp: number

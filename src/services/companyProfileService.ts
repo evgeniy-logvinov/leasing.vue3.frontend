@@ -27,7 +27,7 @@ const companyProfile: CompanyProfile = {
     lastName: '',
     patronymic: '',
   },
-  inn: 0,
+  inn: '',
   kpp: 0,
   legalAddress: {
     building: '',

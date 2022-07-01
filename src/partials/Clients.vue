@@ -1,12 +1,13 @@
 <script setup lang="ts">
   import { onMounted, ref } from 'vue'
-  import { ElRow, ElCol, ElButton } from 'element-plus'
+  import { ElRow, ElCol, ElButton, ElMessage } from 'element-plus'
   import { userService } from '~/services'
   import { useI18n } from 'vue-i18n'
   import ClientsTable from '~/forms/ClientsTable.vue'
   import { NewUser } from '~/types'
   import AddUser from '~/forms/AddUser.vue'
   import { ClientEntity } from '~/entities'
+  import axios from 'axios'
   // TODO: debounce for description
 
   const clients = ref<ClientEntity[]>([])
@@ -21,7 +22,7 @@
     } else {
       throw Error(t('client.not.exists'))
     }
-    await userService.updateClient(client)
+    await userService.inviteClient(client)
   }
 
   const handleDelete = async (id: string) => {
@@ -56,9 +57,22 @@
 
   const addClient = async ({ email, inn, userName }: NewUser) => {
     if (email && inn && userName) {
-      await userService.addClient(userName, inn, email)
-      dialogAddVisible.value = false
-      getClients()
+      try {
+        await userService.addClient(userName, inn, email)
+        dialogAddVisible.value = false
+        await getClients()
+      } catch (err) {
+        if (axios.isAxiosError(err) && err.response) {
+          console.log(err.response.data.message)
+          if (typeof err.response.data.message === 'string') {
+            ElMessage.error(err.response.data.message)
+          } else {
+            ElMessage.error(err.response.data.message?.join(', '))
+          }
+        } else {
+          console.log(err)
+        }
+      }
     }
   }
 

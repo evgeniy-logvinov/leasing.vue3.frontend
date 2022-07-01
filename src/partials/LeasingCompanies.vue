@@ -21,7 +21,7 @@
     } else {
       throw Error(t('leasingCompany.not.exists'))
     }
-    await userService.updateLeasingCompany(leasingCompany)
+    await userService.inviteLeasingCompany(leasingCompany)
   }
 
   const handleDelete = async (id: string) => {

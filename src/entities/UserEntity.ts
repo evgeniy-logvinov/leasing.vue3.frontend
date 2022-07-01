@@ -7,7 +7,7 @@ export abstract class UserEntity implements IUser {
   constructor(
     private readonly _id: string,
     private readonly _userName: string,
-    private readonly _inn: number,
+    private readonly _inn: string,
     private readonly _email: string,
     private readonly _state: UserState,
     private _blocked: boolean,
@@ -25,7 +25,7 @@ export abstract class UserEntity implements IUser {
     return this._userName
   }
 
-  public get inn(): number {
+  public get inn(): string {
     return this._inn
   }
 

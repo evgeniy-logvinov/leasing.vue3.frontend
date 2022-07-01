@@ -8,7 +8,7 @@ export class GCEntity implements IGC {
   constructor(
     private readonly _id: string,
     private readonly _name: string,
-    private readonly _inn: number,
+    private readonly _inn: string,
     private readonly _accreditation: boolean,
     private readonly _taxationSystem: TaxationSystem
   ) {
@@ -23,7 +23,7 @@ export class GCEntity implements IGC {
     return this._name
   }
 
-  public get inn(): number {
+  public get inn(): string {
     return this._inn
   }
 

@@ -3,7 +3,7 @@ import { UserState } from './UserState'
 export interface IUser {
   id: string
   userName: string
-  inn: number
+  inn: string
   email: string
   state: UserState
   blocked: boolean

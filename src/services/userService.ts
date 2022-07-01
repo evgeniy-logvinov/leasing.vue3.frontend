@@ -167,14 +167,14 @@ class UserService {
 
   async addClient(
     userName: string,
-    inn: number,
+    inn: string,
     email: string
   ): Promise<ClientEntity> {
     const { data: client }: { data: ClientEntity } = await axios.post(
       '/client',
       {
         userName,
-        inn: Number(inn),
+        inn,
         email,
       }
     )
@@ -184,6 +184,15 @@ class UserService {
   async updateClient(client: ClientEntity): Promise<ClientEntity> {
     const { data: res }: { data: ClientEntity } = await axios.patch(
       '/client',
+      client.unparse()
+    )
+
+    return Promise.resolve(ClientEntity.parse(res))
+  }
+
+  async inviteClient(client: ClientEntity): Promise<ClientEntity> {
+    const { data: res }: { data: ClientEntity } = await axios.patch(
+      '/client/invite',
       client.unparse()
     )
 
@@ -205,14 +214,14 @@ class UserService {
 
   async addLeasingCompany(
     userName: string,
-    inn: number,
+    inn: string,
     email: string
   ): Promise<LeasingCompanyEntity> {
     const { data: leasingCompany }: { data: ClientEntity } = await axios.post(
       '/leasing-company',
       {
         userName,
-        inn: Number(inn),
+        inn,
         email,
       }
     )
@@ -224,6 +233,17 @@ class UserService {
   ): Promise<LeasingCompanyEntity> {
     const { data: res }: { data: LeasingCompanyEntity } = await axios.patch(
       '/leasing-company',
+      leasingCompany.unparse()
+    )
+
+    return Promise.resolve(LeasingCompanyEntity.parse(res))
+  }
+
+  async inviteLeasingCompany(
+    leasingCompany: LeasingCompanyEntity
+  ): Promise<LeasingCompanyEntity> {
+    const { data: res }: { data: LeasingCompanyEntity } = await axios.patch(
+      '/leasing-company/invite',
       leasingCompany.unparse()
     )
 

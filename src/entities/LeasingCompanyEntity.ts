@@ -8,7 +8,7 @@ export class LeasingCompanyEntity
   constructor(
     _id: string,
     _userName: string,
-    _inn: number,
+    _inn: string,
     _email: string,
     _state: UserState,
     private _accreditation = false,
